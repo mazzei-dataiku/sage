@@ -6,7 +6,7 @@ def collect_modules(dss_objs):
     directory = dss_objs.__path__[0]
     for root, _, files in os.walk(directory):
         for f in files:
-            if not f.endswith(".py") or f != "__init__.py":
+            if not f.endswith(".py") or f == "__init__.py":
                 continue
             module_name = f[:-3]
             path = root.replace(directory, "")
