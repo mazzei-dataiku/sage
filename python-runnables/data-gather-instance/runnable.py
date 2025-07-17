@@ -31,13 +31,10 @@ class MyRunnable(Runnable):
         # Test if modules are found
         if not dss_objs:
             raise Exception("No categories or modules found")
-        # Build local client
-        client = dss_funcs.build_local_client()
-        instance_name = dss_funcs.get_dss_name(client)
         # Collect the modules
         modules = dss_funcs.collect_modules(dss_objs)
         # Run the modules
-        results = dss_funcs.run_modules(self, client, instance_name, dss_objs)
+        results = dss_funcs.run_modules(self, dss_objs)
 
         if results:
             df = pd.DataFrame(results, columns=["path", "module_name", "step", "result", "message"])
