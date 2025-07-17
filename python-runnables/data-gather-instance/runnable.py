@@ -20,6 +20,7 @@ class MyRunnable(Runnable):
         self.sage_project_key = plugin_config.get("sage_project_key", None)
         self.sage_project_url = plugin_config.get("sage_project_url", None)
         self.sage_project_api = plugin_config.get("sage_project_api", None)
+        self.dt = datetime.utcnow()
         
     def get_progress_target(self):
         return None
