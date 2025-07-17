@@ -5,7 +5,7 @@ import os
 import importlib
 import pandas as pd
 
-def run_modules(client, instance_name, dt):
+def run_modules(client, instance_name):
     directory = dss_object.__path__[0]
     for root, _, files in os.walk(directory):
         for f in files:
