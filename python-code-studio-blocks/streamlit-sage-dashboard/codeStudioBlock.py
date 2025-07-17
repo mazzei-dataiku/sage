@@ -36,16 +36,16 @@ class MyCodeStudioBlock(CodeStudioBlock):
         
         # Default Packages
         default_packages = [
-            "streamlit==1.46.1"
-            "streamlit-aggrid"
-            "altair"
-            "tomli"
-            "tabulate"
-            "lxml"
-            "plotly"
-            "scipy"
-            "nbformat>=4.2.0"
-            "orjson"
+            "streamlit==1.46.1",
+            "streamlit-aggrid",
+            "altair",
+            "tomli",
+            "tabulate",
+            "lxml",
+            "plotly",
+            "scipy",
+            "nbformat>=4.2.0",
+            "orjson",
             "matplotlib"
         ]
         default_packages = " ".join(default_packages)
