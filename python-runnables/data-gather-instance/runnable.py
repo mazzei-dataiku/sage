@@ -37,8 +37,18 @@ class MyRunnable(Runnable):
 
     def run(self, progress_callback):
         a = []
-        for k in self.plugin_config["api_configs"]:
-        #for k in self.config.keys():
-            a.append(" -- ".join(k))
+        for api_config in self.plugin_config["api_configs"]:
+            hashKey = api_configs[0]
+            worker_url = api_configs[1]
+            worker_api = api_configs[2]
+            print(api_confg)
             
         return " | ".join(a)
+    
+    
+    
+    
+    
+    
+    
+    
