@@ -15,18 +15,7 @@ from sage.src import dss_funcs
 #sys.path.append('/path/to/your/library/directory')
 
 
-def run_modules(client, instance_name):
-        try:
-            spec = importlib.util.spec_from_file_location(module_name, fp)
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
-            if hasattr(module, 'main'):
-                df = module.main(client)
-                results.append([path, module_name, "load/run", True, None])
-        except Exception as e:
-            df = pd.DataFrame()
-            results.append([path, module_name, "load/run", False, e])
-            print(f"Error importing or running ({path}) {module_name}: {e}")
+
 
 
 class MyRunnable(Runnable):
