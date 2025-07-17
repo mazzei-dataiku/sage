@@ -6,8 +6,17 @@ import os
 def build_local_client():
     return client
 
+
 def build_remote_client():
     return client
+
+
+def get_dss_name(client):
+    instance_info = client.get_instance_info()
+    instance_name = instance_info.node_name.lower()
+    instance_name = re.sub(r'[^a-zA-Z0-9]', ' ', instance_name)
+    instance_name = re.sub(r'\s+', '_', instance_name)
+    return instance_name
 
 
 def collect_modules(dss_objs):
