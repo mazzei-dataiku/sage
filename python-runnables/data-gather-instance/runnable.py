@@ -14,9 +14,6 @@ except:
 #sys.path.append('/path/to/your/library/directory')
 
 def run_modules(client, instance_name):
-    directory = dss_categories.__path__[0]
-    results = []
-    for root, _, files in os.walk(directory):
         for f in files:
             if not f.endswith(".py") or f == "__init__.py":
                 continue
