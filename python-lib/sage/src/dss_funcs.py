@@ -57,7 +57,14 @@ def run_modules(self, dss_objs):
     return results
 
 
-
+def get_nested_value(data, keys):
+    current = data
+    for key in keys:
+        if isinstance(current, dict) and key in current:
+            current = current[key]
+        else:
+            return False
+    return current
 
 
 
