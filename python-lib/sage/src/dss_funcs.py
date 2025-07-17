@@ -53,7 +53,10 @@ def run_modules(self, dss_objs):
                 df["instance_name"] = get_dss_name(client)
             # write to blah
             remote_client = build_remote_client(self.sage_project_url, self.sage_project_api)
-            dss_folder.write_remote_folder_output(self, client, path, df)
+            dt_year  = str(self.dt.year)
+            dt_month = str(f'{self.dt.month:02d}')
+            dt_day   = str(f'{self.dt.day:02d}')
+            dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
     return results
 
 
