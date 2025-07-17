@@ -33,6 +33,8 @@ class MyRunnable(Runnable):
     def run(self, progress_callback):
         if not dss_objs:
             raise Exception("No categories or modules found")
+            
+        client = build_local_client(host, api_key)
 
         # Load the INSIGHTS information
         modules = dss_funcs.collect_modules(dss_objs)
