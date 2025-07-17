@@ -74,7 +74,6 @@ def function_with_warning(df):
 
 
 # ---------- DATAIKU REMOTE FOLDERS ----------------------------
-
 def write_remote_folder(self, client, df):
     projet_handle = client.get_project(project_key=self.sage_project_key)
     fid = None
