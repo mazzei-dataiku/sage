@@ -54,7 +54,7 @@
         {
             "name": "testing",
             "label": "Sage Dashboard Project Key",
-            "type": "STRING",
+            "type": "OBJECT_LIST",
             "description": "",
             "mandatory": true
         }
