@@ -33,6 +33,11 @@
             "mandatory": true
         },
         {
+            "name": "sep1",
+            "label": "Authentication",
+            "type": "SEPARATOR"
+        },
+        {
             "name": "sage_worker_key",
             "label": "Sage Worker Project Key",
             "type": "STRING",
