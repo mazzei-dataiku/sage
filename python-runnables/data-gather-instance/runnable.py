@@ -5,20 +5,17 @@ import os
 import importlib
 import pandas as pd
 
+#import sys
+#sys.path.append('/path/to/your/library/directory')
+
 from sage.src import dss_funcs
 try:
     from sage.base_data import client_handle as dss_objs
 except:
     dss_objs = False
 
-#import sys
-#sys.path.append('/path/to/your/library/directory')
 
-
-
-
-
-class MyRunnable(Runnable):
+    class MyRunnable(Runnable):
     def __init__(self, project_key, config, plugin_config):
         self.project_key = project_key
         self.config = config
