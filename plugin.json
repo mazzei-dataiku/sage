@@ -54,31 +54,7 @@
             "label": "Sage Worker Host URLs and API Keys",
             "type": "OBJECT_LIST",
             "subParams": [
-                {
-                    "type": "SEPARATOR",
-                    "label": "Enter your identities"
-                },
-                {
-                    "name": "document_type",
-                    "type": "SELECT",
-                    "label": "Document type",
-                    "selectChoices": [
-                        { "value": "id", "label": "Id Card"},
-                        { "value": "passport", "label": "Passport"}
-                    ]
-                },
-                {
-                    "name": "number",
-                    "type": "STRING",
-                    "label": "Number of your Id card",
-                    "visibilityCondition": "model.document_type == 'id'"
-                },
-                {
-                    "name": "number",
-                    "type": "STRING",
-                    "label": "Number of your Passport",
-                    "visibilityCondition": "model.document_type == 'passport'"
-                }
+
             ]
         }
     ],
