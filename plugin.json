@@ -50,5 +50,13 @@
             "mandatory": true
         }
     ],
-    "adminParams": []
+    "adminParams": [
+        {
+            "name": "testing",
+            "label": "Sage Dashboard Project Key",
+            "type": "STRING",
+            "description": "",
+            "mandatory": true
+        }
+    ]
 }
