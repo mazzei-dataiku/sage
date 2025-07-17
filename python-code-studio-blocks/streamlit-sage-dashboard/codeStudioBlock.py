@@ -24,7 +24,7 @@ class MyCodeStudioBlock(CodeStudioBlock):
     def _get_port(self):
         return 8181
         
-    def build_spec(self, spec, env):
+    def build_spec(self, spec, env, template):
         port = self._get_port()
         entrypoint_path = self._get_entrypoint_path()
         start_file = "__PROJECT_LIB_VERSIONED__/python/sage/streamlit/app.py"
