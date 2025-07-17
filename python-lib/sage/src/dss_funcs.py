@@ -41,6 +41,10 @@ def collect_modules(dss_objs):
 
 
 def run_modules(client, modules, instance_name):
+    results = []
+    for module_name in modules:
+        path = module_name[0]
+        fp = module_name[1]
         try:
             spec = importlib.util.spec_from_file_location(module_name, fp)
             module = importlib.util.module_from_spec(spec)
@@ -51,4 +55,4 @@ def run_modules(client, modules, instance_name):
         except Exception as e:
             df = pd.DataFrame()
             results.append([path, module_name, "load/run", False, e])
-            print(f"Error importing or running ({path}) {module_name}: {e}")
+    return results
