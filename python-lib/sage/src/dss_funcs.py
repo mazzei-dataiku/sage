@@ -16,9 +16,8 @@ def collect_modules(dss_objs):
             module_name = f[:-3]
             path = root.replace(directory, "")
             fp = os.path.join(root, f)
-            delimiters = r'[-_]'
-            words = re.split(delimiters, module_name)
-            capitalized_words = [word.capitalize() for word in words]
-            final_string = " ".join(capitalized_words)
-            d[final_string] = [module_name, fp]
+            if d.get(module_name):
+                d[module_name].append([path, fp])
+            else:
+                d[module_name] = [[path,fp]]
     return d
