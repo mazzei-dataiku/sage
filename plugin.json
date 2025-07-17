@@ -54,7 +54,10 @@
             "label": "Sage Worker Host URLs and API Keys",
             "type": "OBJECT_LIST",
             "subParams": [
-
+                {
+                    "type": "SEPARATOR",
+                    "label": "Enter your identities"
+                }
             ]
         }
     ]
