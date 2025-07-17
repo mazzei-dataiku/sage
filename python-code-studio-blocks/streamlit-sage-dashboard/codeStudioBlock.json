@@ -4,32 +4,11 @@
         "description": "Streamlit framework for creating the Sage Dashboard",
         "icon": "icon-dku-streamlit"
     },
-    "params": [
-        {
-            "name": "parameter1",
-            "label": "User-readable name",
-            "type": "STRING",
-            "description": "Some documentation for parameter1",
-            "mandatory": true
-        },
-        {
-            "name": "parameter2",
-            "type": "INT",
-            "defaultValue" : 42
-        },
-        {
-            "name": "parameter8",
-            "type": "SELECT",
-            "selectChoices": [
-                {
-                    "value": "val_x",
-                    "label": "display name for val_x"
-                },
-                {
-                    "value": "val_y",
-                    "label": "display name for val_y"
-                }
-            ]
-        }
-    ]
+    
+    "isUnique": false,
+    "isLocked": false,
+    "isAdvanced": false,
+    "uiDisplayPriority": 42,
+    
+    "params": []
 }
