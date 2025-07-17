@@ -9,6 +9,7 @@ try:
     from sage.base_data import client_handle as dss_categories
 except:
     dss_categories = False
+from sage.src import dss_funcs
 
 #import sys
 #sys.path.append('/path/to/your/library/directory')
@@ -47,7 +48,7 @@ class MyRunnable(Runnable):
             raise Exception("No categories or modules found")
 
         # Load the INSIGHTS information
-        modules, display_data = collect_display_data(dss_categories) # list | dict
+        modules, display_data = dss_funcs.collect_display_data(dss_categories) # list | dict
 
         return " | ".join(modules)
     
