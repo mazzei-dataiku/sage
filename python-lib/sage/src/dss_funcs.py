@@ -55,6 +55,6 @@ def run_modules(client, modules, instance_name):
                 df = module.main(client)
                 results.append([path, module_name, "load/run", True, None])
         except Exception as e:
-            #df = pd.DataFrame()
+            df = pd.DataFrame()
             results.append([path, module_name, "load/run", False, e])
     return results
