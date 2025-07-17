@@ -12,7 +12,7 @@ def collect_modules(dss_objs):
             path = root.replace(directory, "")
             fp = os.path.join(root, f)
             l = [path, fp]
-            if module_name in d.keys():
+            if module_name in modules.keys():
                 modules[module_name].append(l)
             else:
                 modules[module_name] = []
