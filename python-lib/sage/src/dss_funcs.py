@@ -25,12 +25,6 @@ def get_dss_name(client):
 
 
 def run_modules(self, dss_objs):
-    
-    
-            # Build local client
-        
-        
-    
     results = []
     directory = dss_objs.__path__[0]
     for root, _, files in os.walk(directory):
