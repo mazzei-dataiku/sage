@@ -48,7 +48,7 @@ class MyRunnable(Runnable):
             raise Exception("No categories or modules found")
 
         # Load the INSIGHTS information
-        modules, display_data = dss_funcs.collect_display_data(dss_categories) # list | dict
+        categories_modules = dss_funcs.collect_modules(dss_objs)(dss_categories)
 
         return " | ".join(display_data.keys())
     
