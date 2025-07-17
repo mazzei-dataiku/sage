@@ -51,12 +51,37 @@
         }
     ],
     "adminParams": [
+{
+    "name": "identity",
+    "label": "Identities",
+    "type": "OBJECT_LIST",
+    "subParams": [
         {
-            "name": "testing",
-            "label": "Sage Dashboard Project Key",
-            "type": "OBJECT_LIST",
-            "description": "",
-            "mandatory": true
+            "type": "SEPARATOR",
+            "label": "Enter your identities"
+        },
+        {
+            "name": "document_type",
+            "type": "SELECT",
+            "label": "Document type",
+            "selectChoices": [
+                { "value": "id", "label": "Id Card"},
+                { "value": "passport", "label": "Passport"}
+            ]
+        },
+        {
+            "name": "number",
+            "type": "STRING",
+            "label": "Number of your Id card",
+            "visibilityCondition": "model.document_type == 'id'"
+        },
+        {
+            "name": "number",
+            "type": "STRING",
+            "label": "Number of your Passport",
+            "visibilityCondition": "model.document_type == 'passport'"
         }
+    ]
+}
     ]
 }
