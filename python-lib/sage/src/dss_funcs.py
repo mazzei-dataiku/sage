@@ -8,12 +8,12 @@ def collect_modules(dss_objs):
         for f in files:
             if not f.endswith(".py") or f != "__init__.py":
                 continue
-            print(f)
             module_name = f[:-3]
             path = root.replace(directory, "")
             fp = os.path.join(root, f)
             if module_name in d.keys():
                 d[module_name].append([path, fp])
             else:
-                d[module_name] = [[path,fp]]
+                d[module_name] = []
+                d[module_name].append([path,fp])
     return d
