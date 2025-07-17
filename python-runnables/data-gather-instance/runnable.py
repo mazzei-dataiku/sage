@@ -40,7 +40,9 @@ class MyRunnable(Runnable):
         results = dss_funcs.run_modules(self, client, instance_name, dss_objs)
 
         if results:
-            return pd.DataFrame(results, columns=["path", "module_name", "step", "result", "message"])
+            df = pd.DataFrame(results, columns=["path", "module_name", "step", "result", "message"])
+            html = df.to_html()
+            return html
         return "FAILED"
     
     
