@@ -48,7 +48,9 @@ class MyRunnable(Runnable):
         # Load the INSIGHTS information
         categories_modules = dss_funcs.collect_modules(dss_objs)
 
-        return "IS THIS WORKING"
+        if categories_modules:
+            return categories_modules
+        return "FAILED"
     
     
     
