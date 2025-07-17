@@ -25,6 +25,12 @@ def get_dss_name(client):
 
 
 def run_modules(self, dss_objs):
+    
+    
+            # Build local client
+        
+        
+    
     results = []
     directory = dss_objs.__path__[0]
     for root, _, files in os.walk(directory):
@@ -39,11 +45,16 @@ def run_modules(self, dss_objs):
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)
                 if hasattr(module, 'main'):
+                    client = build_local_client()
                     df = module.main(client)
                     results.append([path, module_name, "load/run", True, None])
             except Exception as e:
                 df = pd.DataFrame()
                 results.append([path, module_name, "load/run", False, e])
+            if df.empty:
+                # no write
+                continue
+            instance_name = dss_funcs.get_dss_name(client)
     return results
 
 
