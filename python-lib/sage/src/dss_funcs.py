@@ -4,10 +4,15 @@ import os
 
 
 def build_local_client():
+    client = dataiku.api_client()
     return client
 
 
 def build_remote_client():
+    client = dataikuapi.DSSclient(
+        host=url, 
+        api_key=api
+    )
     return client
 
 
