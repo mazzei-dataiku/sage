@@ -59,7 +59,7 @@ def run_modules(self, dss_objs):
                 dt_day   = str(f'{self.dt.day:02d}')
                 write_path = f"/{instance_name}/{path}/{module_name}/{dt_year}/{dt_month}/{dt_day}/data.csv
                 dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
-            except:
+            except Exception as e:
                 results.append([path, module_name, "write/save", False, e])
     return results
 
