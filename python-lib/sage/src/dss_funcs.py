@@ -1,6 +1,7 @@
 import dataiku
 import dataikuapi
 import os
+import re
 
 
 def build_local_client():
