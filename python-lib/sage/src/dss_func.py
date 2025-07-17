@@ -6,9 +6,9 @@ import pandas as pd
 import tomllib
 
 
-def collect_display_data(load_modules):
+def collect_display_data(dss_objs):
     display_data = []
-    modules = collect_modules(load_modules)
+    modules = collect_modules(dss_objs)
     for key in modules.keys():
         r_type = key.split(" ")
         r_type = r_type[0].lower()
