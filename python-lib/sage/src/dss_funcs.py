@@ -52,9 +52,26 @@ def run_modules(self, dss_objs):
             if "instance_name" not in df.columns:
                 df["instance_name"] = get_dss_name(client)
             # write to blah
-            client = build_remote_client(host, api_key)
+            client = build_remote_client(self.sage_project_url, self.sage_project_api)
             write_remote_folder(client, df)
     return results
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def collect_modules(dss_objs):
