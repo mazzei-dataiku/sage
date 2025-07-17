@@ -5,8 +5,8 @@ from block_utils import LibLocationPathReplacer, generate_python_codenv
 
 from distutils.version import LooseVersion
 
-# starting file       __PROJECT_LIB_VERSIONED__/python/sage/streamlit/app.py
-# settings folder     __PROJECT_LIB_VERSIONED__/python/sage/streamlit
+# starting file       
+# settings folder     
 
 class MyCodeStudioBlock(CodeStudioBlock):
     def __init__(self, config, plugin_config):
@@ -25,8 +25,17 @@ class MyCodeStudioBlock(CodeStudioBlock):
         return 8181
         
     def build_spec(self, spec, env):
-        dockerfile = spec.get("dockerfile", "")
-        dockerfile = dockerfile + "\n\n# this was added by a block\n"
+        port = self._get_port()
+        entrypoint_path = self._get_entrypoint_path()
+        start_file = "__PROJECT_LIB_VERSIONED__/python/sage/streamlit/app.py"
+        settings_path = "__PROJECT_LIB_VERSIONED__/python/sage/streamlit"
+        enable_xsrf = False
+        
+        
+        
+        
+        
+        
         return {"dockerfile":dockerfile}
 
     def build_launch(self, spec, env):
