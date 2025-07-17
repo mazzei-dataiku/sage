@@ -11,6 +11,12 @@ class MyCodeStudioBlock(CodeStudioBlock):
         self.plugin_config = plugin_config
         
     _ENTRYPOINT_FILE = "streamlit-entrypoint.sh"
+    
+    def _get_entrypoint_path(self):
+        entrypoint_path = self.config.get("startScript", "/opt/dataiku")
+        if entrypoint_path.endswith("/") or not entrypoint_path.endswith(".sh"):
+            entrypoint_path = os.path.join(entrypoint_path, self._ENTRYPOINT_FILE)
+        return entrypoint_path
         
     def build_spec(self, spec, env):
         dockerfile = spec.get("dockerfile", "")
