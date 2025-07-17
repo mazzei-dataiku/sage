@@ -1,8 +1,8 @@
 {
     "meta" : {
-        "label": "Custom Code Studio block streamlit-sage-dashboard",
-        "description": "",
-        "icon": "fas fa-puzzle-piece"
+        "label": "Sage Dashboard - Streamlit",
+        "description": "Streamlit framework for creating the Sage Dashboard",
+        "icon": "icon-dku-streamlit"
     },
     "params": [
         {
