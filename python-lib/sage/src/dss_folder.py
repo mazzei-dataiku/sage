@@ -40,14 +40,6 @@ def create_local_folder(folder_name):
     )
     return folder
 
-# ---------- DATAIKU REMOTE FOLDERS ----------------------------
-
-
-
-
-
-
-# ---------- DATAIKU LOCAL FOLDERS ----------------------------
 
 def write_folder_output(folder_name, path, data, data_type="DF"):
     folder = get_folder(folder_name)
@@ -80,6 +72,28 @@ def function_with_warning(df):
             if temp_col.notna().all():
                 df[c] = temp_col
     return df
+# ---------- DATAIKU REMOTE FOLDERS ----------------------------
+
+projet_handle = client.get_project(project_key="SAGE_DASHBOARD")
+
+fid = None
+for f in projet_handle.list_managed_folders():
+    if f["name"] == "partitioned_data":
+        fid = f["id"]
+        break
+if not fid:
+    raise Exception()
+
+folder = projet_handle.get_managed_folder(odb_id=fid)
+
+r = folder.put_file("/testing_again.csv", df.to_csv(index=None))
+
+
+
+
+# ---------- DATAIKU LOCAL FOLDERS ----------------------------
+
+
 
 
 if __name__ == "__main__":
