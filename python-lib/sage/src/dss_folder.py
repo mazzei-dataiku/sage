@@ -17,7 +17,7 @@ def get_local_folder(folder_name):
     return folder
 
 
-def create_local_folder(folder_name):
+def create_local_folder(client, folder_name):
     client = dataiku.api_client()
     project = client.get_default_project()    
     folder_handle = project.create_managed_folder(
