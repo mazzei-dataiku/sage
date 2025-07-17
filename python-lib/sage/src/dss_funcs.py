@@ -46,8 +46,7 @@ def run_modules(self, dss_objs):
                 df = pd.DataFrame()
                 results.append([path, module_name, "load/run", False, e])
             if df.empty:
-                # no write
-                continue
+                continue # nothing to write, skip
             instance_name = get_dss_name(client)
     return results
 
