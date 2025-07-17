@@ -39,6 +39,6 @@ class MyRunnable(Runnable):
         a = []
         for k in self.plugin_config["api_configs"]:
         #for k in self.config.keys():
-            a.append(k)
+            a.append(" -- ".join(k))
             
         return " | ".join(a)
