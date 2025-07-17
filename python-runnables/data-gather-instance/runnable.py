@@ -1,15 +1,11 @@
 from dataiku.runnables import Runnable
 from dataiku.customrecipe import get_recipe_config
 
-
-#import sys
-#sys.path.append('/path/to/your/library/directory')
-
-from sage.src import dss_funcs
 try:
     from sage.base_data import client_handle as dss_objs
 except:
     dss_objs = False
+from sage.src import dss_funcs
 
 import pandas as pd
 from datetime import datetime
