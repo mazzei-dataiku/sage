@@ -12,6 +12,10 @@
     },
     "params": [
         {
+            "name": "sep1",
+            "label": "Sage Dashboard Information",
+            "type": "SEPARATOR"
+        },{
             "name": "sage_project_key",
             "label": "Sage Dashboard Project Key",
             "type": "STRING",
@@ -33,8 +37,8 @@
             "mandatory": true
         },
         {
-            "name": "sep1",
-            "label": "Authentication",
+            "name": "sep2",
+            "label": "Sage Worker Information",
             "type": "SEPARATOR"
         },
         {
