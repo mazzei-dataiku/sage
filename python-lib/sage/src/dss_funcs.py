@@ -52,13 +52,15 @@ def run_modules(self, dss_objs):
             instance_name = get_dss_name(client)
             if "instance_name" not in df.columns:
                 df["instance_name"] = instance_name
-            # write to blah
-            remote_client = build_remote_client(self.sage_project_url, self.sage_project_api)
-            dt_year  = str(self.dt.year)
-            dt_month = str(f'{self.dt.month:02d}')
-            dt_day   = str(f'{self.dt.day:02d}')
-            write_path = f"/{instance_name}/{path}/{module_name}/{dt_year}/{dt_month}/{dt_day}/data.csv
-            dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
+            try:
+                remote_client = build_remote_client(self.sage_project_url, self.sage_project_api)
+                dt_year  = str(self.dt.year)
+                dt_month = str(f'{self.dt.month:02d}')
+                dt_day   = str(f'{self.dt.day:02d}')
+                write_path = f"/{instance_name}/{path}/{module_name}/{dt_year}/{dt_month}/{dt_day}/data.csv
+                dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
+            except:
+                results.append([path, module_name, "write/save", False, e])
     return results
 
 
