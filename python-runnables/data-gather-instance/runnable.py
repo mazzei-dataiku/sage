@@ -33,6 +33,7 @@ class MyRunnable(Runnable):
             raise Exception("No categories or modules found")
         # Build local client
         client = build_local_client(host, api_key)
+        instance_name = get_dss_name(client)
         # Collect the modules
         modules = dss_funcs.collect_modules(dss_objs)
 
