@@ -63,12 +63,7 @@ class MyRunnable(Runnable):
             raise Exception("No categories or modules found")
 
         # Load the INSIGHTS information
-        display_data = []
-        modules = {}
-        if dss_objects:
-            tmp_modules, tmp_display_data = dss_funcs.collect_display_data(dss_objects)
-            modules = modules | tmp_modules
-            display_data += tmp_display_data
+        modules, display_data = collect_display_data(dss_objects)
 
         return
     
