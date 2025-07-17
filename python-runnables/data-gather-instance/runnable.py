@@ -47,6 +47,8 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
+        if not dss_categories:
+            raise Exception("No categories or modules found")
         
         return
     
