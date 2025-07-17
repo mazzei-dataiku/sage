@@ -56,7 +56,14 @@
             "subParams": [
                 {
                     "type": "SEPARATOR",
-                    "label": "Enter your identities"
+                    "label": "Enter Host Information"
+                },
+                {
+                    "name": "number",
+                    "label": "Number of your Id card",
+                    "type": "STRING",
+                    "description": "",
+                    "mandatory": true
                 }
             ]
         }
