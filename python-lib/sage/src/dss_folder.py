@@ -18,7 +18,6 @@ def get_local_folder(folder_name):
 
 
 def create_local_folder(client, folder_name):
-    client = dataiku.api_client()
     project = client.get_default_project()    
     folder_handle = project.create_managed_folder(
         name = folder_name,
@@ -76,24 +75,18 @@ def function_with_warning(df):
 
 # ---------- DATAIKU REMOTE FOLDERS ----------------------------
 
-def write_remote_folder(self, df):
-    client = 
-
-projet_handle = client.get_project(project_key="SAGE_DASHBOARD")
-
-fid = None
-for f in projet_handle.list_managed_folders():
-    if f["name"] == "partitioned_data":
-        fid = f["id"]
-        break
-if not fid:
-    raise Exception()
-
-folder = projet_handle.get_managed_folder(odb_id=fid)
-
-r = folder.put_file("/testing_again.csv", df.to_csv(index=None))
-
-
+def write_remote_folder(client, df):
+    projet_handle = client.get_project(project_key="SAGE_DASHBOARD")
+    fid = None
+    for f in projet_handle.list_managed_folders():
+        if f["name"] == "partitioned_data":
+            fid = f["id"]
+            break
+    if not fid:
+        raise Exception()
+    folder = projet_handle.get_managed_folder(odb_id=fid)
+    r = folder.put_file("/testing_again.csv", df.to_csv(index=None))
+    return
 
 
 # ---------- DATAIKU LOCAL FOLDERS ----------------------------
