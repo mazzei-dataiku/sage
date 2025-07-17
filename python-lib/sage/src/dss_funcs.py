@@ -25,6 +25,7 @@ def get_dss_name(client):
 
 
 def run_modules(self, client, instance_name, dss_objs):
+    results = []
     directory = dss_objs.__path__[0]
     for root, _, files in os.walk(directory):
         for f in files:
