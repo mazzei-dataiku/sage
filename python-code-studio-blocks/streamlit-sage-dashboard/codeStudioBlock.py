@@ -10,6 +10,8 @@ class MyCodeStudioBlock(CodeStudioBlock):
         self.config = config
         self.plugin_config = plugin_config
         
+    _ENTRYPOINT_FILE = "streamlit-entrypoint.sh"
+        
     def build_spec(self, spec, env):
         dockerfile = spec.get("dockerfile", "")
         dockerfile = dockerfile + "\n\n# this was added by a block\n"
