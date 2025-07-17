@@ -13,6 +13,10 @@ except:
 #import sys
 #sys.path.append('/path/to/your/library/directory')
 
+def collect_category_files():
+    return
+
+
 def run_modules(client, instance_name):
     for f in files:
         if not f.endswith(".py") or f == "__init__.py":
@@ -49,6 +53,9 @@ class MyRunnable(Runnable):
         if not dss_categories:
             raise Exception("No categories or modules found")
         
+        # Run
+        directory = dss_categories.__path__[0]
+        for root, _, files in os.walk(directory):
         return
     
     
