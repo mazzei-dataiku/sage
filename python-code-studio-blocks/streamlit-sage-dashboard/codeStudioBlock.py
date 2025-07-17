@@ -39,7 +39,10 @@ class MyCodeStudioBlock(CodeStudioBlock):
         # get code env stuff
 
         default_packages = "streamlit==1.9.2 altair==4.2.2 urllib3<2"
-        generate_codenv, pyenv_path = generate_python_codenv("STREAMLIT", self.config, template, default_packages, "/opt/dataiku/python-code-envs/pyenv-streamlit", "python3.9", env.get("globalCodeEnvsExtraSettings"))
+        generate_codenv, pyenv_path = generate_python_codenv(
+            "STREAMLIT", self.config, template,
+            default_packages, "/opt/dataiku/python-code-envs/pyenv-streamlit", "python3.9", env.get("globalCodeEnvsExtraSettings")
+        )
         
         # add the entrypoint script in the buildir
         entrypoint_script = """
