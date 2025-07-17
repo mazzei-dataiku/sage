@@ -20,6 +20,9 @@ class MyCodeStudioBlock(CodeStudioBlock):
         if entrypoint_path.endswith("/") or not entrypoint_path.endswith(".sh"):
             entrypoint_path = os.path.join(entrypoint_path, self._ENTRYPOINT_FILE)
         return entrypoint_path
+    
+    def _get_port(self):
+        return 8181
         
     def build_spec(self, spec, env):
         dockerfile = spec.get("dockerfile", "")
