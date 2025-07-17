@@ -6,9 +6,9 @@ import importlib
 import pandas as pd
 
 try:
-    from sage.base_data import client_handle as dss_categories
+    from sage.base_data import client_handle as dss_objs
 except:
-    dss_categories = False
+    dss_objs = False
 from sage.src import dss_funcs
 
 #import sys
@@ -44,11 +44,11 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
-        if not dss_categories:
+        if not dss_objs:
             raise Exception("No categories or modules found")
 
         # Load the INSIGHTS information
-        categories_modules = dss_funcs.collect_modules(dss_objs)(dss_categories)
+        categories_modules = dss_funcs.collect_modules(dss_objs)
 
         return " | ".join(categories_modules.keys())
     
