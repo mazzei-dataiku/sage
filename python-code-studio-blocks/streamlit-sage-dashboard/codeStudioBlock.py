@@ -36,9 +36,21 @@ class MyCodeStudioBlock(CodeStudioBlock):
         
         # get code env stuff
 
-        client = dataiku.api_client()
-        code_env_handle = client.get_code_env(env_name="plugin_sage-dashboard_managed", env_lang="PYTHON")
-        default_packages = " ".join(code_env_handle.get_settings().get_required_packages().split())
+
+        default_packages = [
+            "streamlit==1.46.1"
+            "streamlit-aggrid"
+            "altair"
+            "tomli"
+            "tabulate"
+            "lxml"
+            "plotly"
+            "scipy"
+            "nbformat>=4.2.0"
+            "orjson"
+            "matplotlib"
+        ]
+        default_packages = " ".join(default_packages)
         generate_codenv, pyenv_path = generate_python_codenv(
             "STREAMLIT", self.config, template,
             default_packages, "/opt/dataiku/python-code-envs/pyenv-streamlit", "python3.11", env.get("globalCodeEnvsExtraSettings")
