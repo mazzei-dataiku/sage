@@ -22,13 +22,12 @@ def run_modules(client, instance_name):
             module_name = f[:-3]
             path = root.replace(directory, "")
             fp = os.path.join(root, f)
-            spec = importlib.util.spec_from_file_location(module_name, fp)
-            results, data = [False, None]
             try:
+                spec = importlib.util.spec_from_file_location(module_name, fp)
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)
                 if hasattr(module, 'main'):
-                    results, data = module.main(client)
+                    results = module.main(client)
             except Exception as e:
                 results, data = [False, None]
                 print(f"Error importing or running ({path}) {module_name}: {e}")
