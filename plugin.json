@@ -1,13 +1,14 @@
 {
     "id": "sage",
-    "version": "0.0.1",
+    "version": "2025.07.03.2",
     "meta": {
-        "label": "Sage",
-        "description": "",
-        "author": "smazzei",
+        "label": "Sage - Dataiku Administration Insights",
+        "description": "This plugin contains the current and future framework for the Admin Sage Dashbaord information.",
+        "author": "Stephen Mazzei",
         "icon": "fas fa-puzzle-piece",
-        "tags": [], //for example: ["Machine Learning", "NLP"]
+        "tags": ["Administration", "Sage", "Insights"],
         "url": "",
         "licenseInfo": "Apache Software License"
-    }
+    },
+    "params": []
 }
