@@ -18,11 +18,13 @@
     "params": [
         {
             "name": "parameter2",
+            "label": "User-readable name",
             "type": "INT",
             "defaultValue" : 42
         },
         {
             "name": "parameter8",
+            "label": "User-readable name",
             "type": "SELECT",
             "selectChoices": [
                 {
