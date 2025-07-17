@@ -27,9 +27,9 @@ def run_modules(client, instance_name):
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)
                 if hasattr(module, 'main'):
-                    results = module.main(client)
+                    df = module.main(client)
             except Exception as e:
-                results, data = [False, None]
+                df = pd.DataFrame()
                 print(f"Error importing or running ({path}) {module_name}: {e}")
 
 
