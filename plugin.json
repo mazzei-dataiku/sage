@@ -10,5 +10,13 @@
         "url": "",
         "licenseInfo": "Apache Software License"
     },
-    "params": []
+    "params": [
+        {
+            "name": "sage_project_key",
+            "label": "Sage Dashboard Project Key",
+            "type": "STRING",
+            "description": "",
+            "mandatory": true
+        }
+    ]
 }
