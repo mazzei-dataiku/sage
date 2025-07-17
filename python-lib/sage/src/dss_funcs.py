@@ -7,7 +7,6 @@ import tomllib
 
 
 def collect_modules(dss_objs):
-    import streamlit as st
     d = {}
     directory = dss_objs.__path__[0]
     for root, _, files in os.walk(directory):
