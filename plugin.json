@@ -19,7 +19,7 @@
             "mandatory": true
         },
         {
-            "name": "say_project_url",
+            "name": "sage_project_url",
             "label": "Sage Dashboard Main Host URL",
             "type": "STRING",
             "description": "",
