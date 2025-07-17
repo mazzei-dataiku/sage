@@ -37,7 +37,7 @@ class MyRunnable(Runnable):
         # Collect the modules
         modules = dss_funcs.collect_modules(dss_objs)
         # Run the modules
-        results = dss_funcs.run_modules(self, client, modules, instance_name)
+        results = dss_funcs.run_modules(self, client, instance_name, dss_objs)
 
         if results:
             return pd.DataFrame(results)
