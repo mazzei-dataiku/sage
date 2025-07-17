@@ -1,4 +1,9 @@
+import dataiku
+import dataikuapi
 import os
+
+def build_remote_client():
+    return client
 
 
 def collect_modules(dss_objs):
