@@ -8,7 +8,7 @@ def build_local_client():
     return client
 
 
-def build_remote_client():
+def build_remote_client(host, api_key):
     client = dataikuapi.DSSclient(
         host=url, 
         api_key=api
