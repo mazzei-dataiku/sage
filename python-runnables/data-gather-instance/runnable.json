@@ -1,7 +1,7 @@
 {
     "meta": {
-        "label": "Sage Dashboard - OS/VM Filesystem",
-        "description": "Collect the Filesystem usage (df).",
+        "label": "Sage Insights - Data Gather Instance level",
+        "description": "Data gather the instance level metadata",
         "icon": "fas fa-puzzle-piece"
     },
     "impersonate": false,
