@@ -49,7 +49,7 @@ def run_modules(self, dss_objs):
                 results.append([path, module_name, "load/run", False, e])
             if df.empty:
                 continue # nothing to write, skip
-            instance_name = get_dss_name(client)
+            instance_name = get_dss_name(local_client)
             if "instance_name" not in df.columns:
                 df["instance_name"] = instance_name
             try:
