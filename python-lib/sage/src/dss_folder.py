@@ -20,7 +20,6 @@ def get_local_folder(folder_name):
 def create_local_folder(folder_name):
     client = dataiku.api_client()
     project = client.get_default_project()    
-    # Create Folder
     folder_handle = project.create_managed_folder(
         name = folder_name,
         connection_name = "filesystem_folders"
@@ -34,7 +33,6 @@ def create_local_folder(folder_name):
         settings.add_time_partitioning_dimension("date", period='DAY')
         settings.set_partitioning_file_pattern("%{instance_name}/%{category}/%{module}/%Y/%M/%D/.*")
         settings.save()
-    # Return Folder object
     folder = dataiku.Folder(
         lookup = folder_name,
         ignore_flow = True,
