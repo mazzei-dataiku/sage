@@ -11,7 +11,7 @@
             "name": "worker_url",
             "label": "Worker Host URL",
             "type": "STRING",
-            "description": "Some documentation for parameter1",
+            "description": "",
             "mandatory": true
         }
     ],
