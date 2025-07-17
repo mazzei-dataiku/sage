@@ -48,5 +48,6 @@
             "description": "",
             "mandatory": true
         }
-    ]
+    ],
+    "adminParams": []
 }
