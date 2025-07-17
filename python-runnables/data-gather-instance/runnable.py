@@ -37,9 +37,8 @@ class MyRunnable(Runnable):
 
     def run(self, progress_callback):
         a = []
-        #for k in self.plugin_config.keys():
-        for k in self.config.keys():
+        for k in self.plugin_config.keys():
+        #for k in self.config.keys():
             a.append(k)
             
-        api_configs = get_recipe_config().get("api_configs")
         return " | ".join(a)
