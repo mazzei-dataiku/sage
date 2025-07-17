@@ -53,7 +53,7 @@ def run_modules(self, dss_objs):
                 df["instance_name"] = get_dss_name(client)
             # write to blah
             client = build_remote_client(self.sage_project_url, self.sage_project_api)
-            dss_folder.write_remote_folder(self, client, df)
+            dss_folder.write_remote_folder(self, client, path, module_name, df)
     return results
 
 
