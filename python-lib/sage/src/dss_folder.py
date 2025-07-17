@@ -1,9 +1,3 @@
-import dataiku
-import pandas as pd
-import json
-import warnings
-
-
 # ---------- DATAIKU REMOTE FOLDERS ----------------------------
 def write_remote_folder(self, client, df):
     projet_handle = client.get_project(project_key=self.sage_project_key)
