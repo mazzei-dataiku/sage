@@ -26,7 +26,7 @@ def get_dss_name(client):
     return instance_name
 
 
-def run_modules(self, dss_objs):
+def run_modules(self, dss_objs, handle):
     results = []
     directory = dss_objs.__path__[0]
     for root, _, files in os.walk(directory):
@@ -41,15 +41,14 @@ def run_modules(self, dss_objs):
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)
                 if hasattr(module, 'main'):
-                    local_client = build_local_client()
-                    df = module.main(local_client)
+                    df = module.main(handle)
                     results.append([path, module_name, "load/run", True, None])
             except Exception as e:
                 df = pd.DataFrame()
                 results.append([path, module_name, "load/run", False, e])
             if df.empty:
                 continue # nothing to write, skip
-            instance_name = get_dss_name(local_client)
+            instance_name = get_dss_name(build_local_client())
             if "instance_name" not in df.columns:
                 df["instance_name"] = instance_name
             try:
