@@ -43,9 +43,9 @@ def collect_modules(dss_objs):
     return modules
 
 
-def run_modules(self, client, modules, instance_name):
-    results = []
-    for module_name in modules:
+def run_modules(self, client, instance_name, dss_objs):
+    directory = dss_objs.__path__[0]
+    for root, _, files in os.walk(directory):
         path = module_name[0]
         fp = module_name[1]
         try:
