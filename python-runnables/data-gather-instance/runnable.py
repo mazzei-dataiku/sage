@@ -1,9 +1,6 @@
 from dataiku.runnables import Runnable
 from dataiku.customrecipe import get_recipe_config
 
-import os
-import importlib
-import pandas as pd
 
 #import sys
 #sys.path.append('/path/to/your/library/directory')
@@ -13,6 +10,9 @@ try:
     from sage.base_data import client_handle as dss_objs
 except:
     dss_objs = False
+
+import pandas as pd
+from datetime import datetime
 
 # Run Macro
 class MyRunnable(Runnable):
