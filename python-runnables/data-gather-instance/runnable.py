@@ -34,6 +34,7 @@ class MyRunnable(Runnable):
         modules = dss_funcs.collect_modules(dss_objs)
         results = dss_funcs.run_modules(self, dss_objs)
         
+        # return results
         if results:
             df = pd.DataFrame(results, columns=["path", "module_name", "step", "result", "message"])
             html = df.to_html()
