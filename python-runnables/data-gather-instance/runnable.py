@@ -50,7 +50,7 @@ class MyRunnable(Runnable):
         # Load the INSIGHTS information
         modules, display_data = dss_funcs.collect_display_data(dss_categories) # list | dict
 
-        return " | ".join(modules)
+        return " | ".join(display_data.keys())
     
     
     
