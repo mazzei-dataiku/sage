@@ -2,6 +2,7 @@ import dataiku
 import dataikuapi
 import os
 import re
+import pandas as pd
 
 
 def build_local_client():
