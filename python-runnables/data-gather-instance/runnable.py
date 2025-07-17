@@ -1,6 +1,3 @@
-from dataiku.runnables import Runnable
-from dataiku.customrecipe import get_recipe_config
-
 try:
     from sage.base_data import client_handle as dss_objs
 except:
@@ -9,6 +6,10 @@ from sage.src import dss_funcs
 
 import pandas as pd
 from datetime import datetime
+
+from dataiku.runnables import Runnable
+from dataiku.customrecipe import get_recipe_config
+
 
 # Run Macro
 class MyRunnable(Runnable):
