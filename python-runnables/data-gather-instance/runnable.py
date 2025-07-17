@@ -28,9 +28,9 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
+        # Test if modules are found
         if not dss_objs:
             raise Exception("No categories or modules found")
-
         # Build local client
         client = build_local_client(host, api_key)
         # Collect the modules
