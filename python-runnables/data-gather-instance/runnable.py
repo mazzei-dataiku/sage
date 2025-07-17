@@ -31,7 +31,6 @@ class MyRunnable(Runnable):
             raise Exception("No categories or modules found")
         
         # Collect the modules && Run the modules
-        modules = dss_funcs.collect_modules(dss_objs)
         results = dss_funcs.run_modules(self, dss_objs)
         
         # return results
