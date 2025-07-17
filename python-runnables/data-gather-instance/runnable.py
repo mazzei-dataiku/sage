@@ -63,7 +63,7 @@ class MyRunnable(Runnable):
             raise Exception("No categories or modules found")
 
         # Load the INSIGHTS information
-        modules, display_data = collect_display_data(dss_objects)
+        modules, display_data = collect_display_data(dss_categories)
 
         return
     
