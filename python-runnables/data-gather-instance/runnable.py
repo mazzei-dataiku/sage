@@ -65,7 +65,7 @@ class MyRunnable(Runnable):
         # Load the INSIGHTS information
         modules, display_data = collect_display_data(dss_categories) # list | dict
 
-        return
+        return " | ".join(modules)
     
     
     
