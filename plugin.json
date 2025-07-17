@@ -59,8 +59,8 @@
                     "label": "Enter Host Information"
                 },
                 {
-                    "name": "number",
-                    "label": "Number of your Id card",
+                    "name": "worker_url",
+                    "label": "Worker Host URL",
                     "type": "STRING",
                     "description": "",
                     "mandatory": true
