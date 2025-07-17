@@ -1,5 +1,6 @@
 import re, logging
 
+
 class LibLocationPathReplacer(object):
     def __init__(self, spec):
         self.spec = spec
