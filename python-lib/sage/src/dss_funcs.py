@@ -40,7 +40,7 @@ def collect_modules(dss_objs):
     return modules
 
 
-def run_modules(client, instance_name):
+def run_modules(client, modules, instance_name):
         try:
             spec = importlib.util.spec_from_file_location(module_name, fp)
             module = importlib.util.module_from_spec(spec)
