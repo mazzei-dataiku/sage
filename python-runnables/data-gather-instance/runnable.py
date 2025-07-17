@@ -1,6 +1,9 @@
 from dataiku.runnables import Runnable
 from dataiku.customrecipe import get_recipe_config
 
+import os
+import importlib
+import pandas as pd
 
 def run_modules(client, instance_name, dt):
     directory = dss_object.__path__[0]
