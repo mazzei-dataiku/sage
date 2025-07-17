@@ -36,9 +36,11 @@ class MyRunnable(Runnable):
         instance_name = get_dss_name(client)
         # Collect the modules
         modules = dss_funcs.collect_modules(dss_objs)
+        # Run the modules
+        results = run_modules(client, modules, instance_name)
 
-        if modules:
-            return modules
+        if results:
+            return pd.DataFrame(results)
         return "FAILED"
     
     
