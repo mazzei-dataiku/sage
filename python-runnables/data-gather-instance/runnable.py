@@ -10,8 +10,7 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
-        a = self.plugin_config.get("sage_project_api", None)
         a = []
         for k in self.plugin_config.keys():
             a.append(k)
-        return " ".join(a)
+        return " | ".join(a)
