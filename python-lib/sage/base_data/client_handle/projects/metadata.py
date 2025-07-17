@@ -43,7 +43,3 @@ def main(client):
         df[c] = df[c].dt.strftime("%Y-%m-%d %H:%M:%S.%f")
 
     return df
-
-
-if __name__ == "__main__":
-    main()
