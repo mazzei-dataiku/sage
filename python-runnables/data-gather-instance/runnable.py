@@ -37,7 +37,7 @@ class MyRunnable(Runnable):
 
     def run(self, progress_callback):
         a = []
-        for k in self.plugin_config.keys():
+        for k in self.plugin_config["api_configs"].keys():
         #for k in self.config.keys():
             a.append(k)
             
