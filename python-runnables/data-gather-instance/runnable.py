@@ -5,8 +5,8 @@ import os
 import importlib
 import pandas as pd
 
-import sys
-sys.path.append('/path/to/your/library/directory')
+#import sys
+#sys.path.append('/path/to/your/library/directory')
 
 def run_modules(client, instance_name):
     directory = dss_object.__path__[0]
