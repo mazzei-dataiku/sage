@@ -1,6 +1,28 @@
 from dataiku.runnables import Runnable
 from dataiku.customrecipe import get_recipe_config
 
+
+def run_modules(client, instance_name, dt):
+    directory = dss_object.__path__[0]
+    for root, _, files in os.walk(directory):
+        for f in files:
+            if not f.endswith(".py") or f == "__init__.py":
+                continue
+            module_name = f[:-3]
+            path = root.replace(directory, "")
+            fp = os.path.join(root, f)
+            spec = importlib.util.spec_from_file_location(module_name, fp)
+            results, data = [False, None]
+            try:
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                if hasattr(module, 'main'):
+                    results, data = module.main(client)
+            except Exception as e:
+                results, data = [False, None]
+                print(f"Error importing or running ({path}) {module_name}: {e}")
+
+
 class MyRunnable(Runnable):
     def __init__(self, project_key, config, plugin_config):
         self.project_key = project_key
