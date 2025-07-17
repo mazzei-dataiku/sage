@@ -1,5 +1,9 @@
-import os, json
+import os, json, re, logging
 from dataiku.code_studio import CodeStudioBlock
+
+from block_utils import LibLocationPathReplacer, generate_python_codenv
+
+from distutils.version import LooseVersion
 
 class MyCodeStudioBlock(CodeStudioBlock):
     def __init__(self, config, plugin_config):
