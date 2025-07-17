@@ -2,6 +2,10 @@ import dataiku
 import dataikuapi
 import os
 
+
+def build_local_client():
+    return client
+
 def build_remote_client():
     return client
 
