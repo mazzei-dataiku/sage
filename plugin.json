@@ -50,8 +50,8 @@
             "mandatory": true
         },
         {
-            "name": "identity",
-            "label": "Identities",
+            "name": "api_configs",
+            "label": "Sage Worker Host URLs and API Keys",
             "type": "OBJECT_LIST",
             "subParams": [
                 {
