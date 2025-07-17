@@ -10,5 +10,5 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
-        self.plugin_config.get("", None)
-        raise Exception("unimplemented")        
+        a = self.plugin_config.get("sage_project_api", None)
+        return a      
