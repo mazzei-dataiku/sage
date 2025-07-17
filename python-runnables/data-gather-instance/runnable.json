@@ -12,5 +12,13 @@
     "extension": "txt",
     "mimeType": "text/plain",
     "macroRoles": [],
-    "params": []
+    "params": [
+        {
+            "name": "api_configs",
+            "label": "api configs",
+            "type": "PRESET",
+            "parameterSetId": "api-configs",
+            "mandatory": true
+        }
+    ]
 }
