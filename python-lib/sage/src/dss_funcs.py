@@ -42,7 +42,7 @@ def collect_modules(dss_objs):
     return modules
 
 
-def run_modules(client, modules, instance_name):
+def run_modules(self, client, modules, instance_name):
     results = []
     for module_name in modules:
         path = module_name[0]
