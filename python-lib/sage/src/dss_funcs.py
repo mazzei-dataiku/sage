@@ -6,10 +6,10 @@ import pandas as pd
 import tomllib
 
 
-def collect_modules(module):
+def collect_modules(dss_objs):
     import streamlit as st
     d = {}
-    directory = module.__path__[0]
+    directory = dss_objs.__path__[0]
     for root, _, files in os.walk(directory):
         for f in files:
             if f.endswith(".py") and f != "__init__.py":
