@@ -32,12 +32,12 @@ class MyRunnable(Runnable):
         if not dss_objs:
             raise Exception("No categories or modules found")
         # Build local client
-        client = build_local_client(host, api_key)
-        instance_name = get_dss_name(client)
+        client = dss_funcs.build_local_client(host, api_key)
+        instance_name = dss_funcs.get_dss_name(client)
         # Collect the modules
         modules = dss_funcs.collect_modules(dss_objs)
         # Run the modules
-        results = run_modules(client, modules, instance_name)
+        results = dss_funcs.run_modules(client, modules, instance_name)
 
         if results:
             return pd.DataFrame(results)
