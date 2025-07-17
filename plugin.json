@@ -15,7 +15,8 @@
             "name": "sep1",
             "label": "Sage Dashboard Information",
             "type": "SEPARATOR"
-        },{
+        },
+        {
             "name": "sage_project_key",
             "label": "Sage Dashboard Project Key",
             "type": "STRING",
