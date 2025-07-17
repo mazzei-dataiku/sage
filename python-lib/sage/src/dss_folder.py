@@ -72,6 +72,8 @@ def function_with_warning(df):
             if temp_col.notna().all():
                 df[c] = temp_col
     return df
+
+
 # ---------- DATAIKU REMOTE FOLDERS ----------------------------
 
 projet_handle = client.get_project(project_key="SAGE_DASHBOARD")
