@@ -13,17 +13,26 @@ except:
 #import sys
 #sys.path.append('/path/to/your/library/directory')
 
-def collect_category_files():
-    return
+def collect_modules(module):
+    d = {}
+    directory = module.__path__[0]
+    for root, _, files in os.walk(directory):
+        for f in files:
+            if f.endswith(".py") and f != "__init__.py":
+                module_name = f[:-3]
+                path = root.replace(directory, "")
+                fp = os.path.join(root, f)
+                delimiters = r'[-_]'
+                words = re.split(delimiters, module_name)
+                capitalized_words = [word.capitalize() for word in words]
+                final_string = " ".join(capitalized_words)
+                d[final_string] = [module_name, fp]
+    return d
 
 
 def run_modules(client, instance_name):
-    for f in files:
-        if not f.endswith(".py") or f == "__init__.py":
-            continue
-        module_name = f[:-3]
-        path = root.replace(directory, "")
-        fp = os.path.join(root, f)
+
+
         try:
             spec = importlib.util.spec_from_file_location(module_name, fp)
             module = importlib.util.module_from_spec(spec)
@@ -52,10 +61,15 @@ class MyRunnable(Runnable):
     def run(self, progress_callback):
         if not dss_categories:
             raise Exception("No categories or modules found")
-        
-        # Run
-        directory = dss_categories.__path__[0]
-        for root, _, files in os.walk(directory):
+
+        # Load the INSIGHTS information
+        display_data = []
+        modules = {}
+        if dss_objects:
+            tmp_modules, tmp_display_data = dss_funcs.collect_display_data(dss_objects)
+            modules = modules | tmp_modules
+            display_data += tmp_display_data
+
         return
     
     
