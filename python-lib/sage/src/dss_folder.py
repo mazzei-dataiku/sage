@@ -76,6 +76,9 @@ def function_with_warning(df):
 
 # ---------- DATAIKU REMOTE FOLDERS ----------------------------
 
+def write_remote_folder(self, df):
+    client = 
+
 projet_handle = client.get_project(project_key="SAGE_DASHBOARD")
 
 fid = None
@@ -94,9 +97,5 @@ r = folder.put_file("/testing_again.csv", df.to_csv(index=None))
 
 
 # ---------- DATAIKU LOCAL FOLDERS ----------------------------
-
-
-
-
 if __name__ == "__main__":
     main()
