@@ -1,5 +1,5 @@
 try:
-    from sage.base_data import client_handle as dss_objs
+    from sage.base_data import project_handle as dss_objs
 except:
     dss_objs = False
 from sage.src import dss_funcs
