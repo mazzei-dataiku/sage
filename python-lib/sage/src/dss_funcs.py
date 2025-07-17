@@ -49,8 +49,9 @@ def run_modules(self, dss_objs):
                 results.append([path, module_name, "load/run", False, e])
             if df.empty:
                 continue # nothing to write, skip
+            instance_name = get_dss_name(client)
             if "instance_name" not in df.columns:
-                df["instance_name"] = get_dss_name(client)
+                df["instance_name"] = instance_name
             # write to blah
             remote_client = build_remote_client(self.sage_project_url, self.sage_project_api)
             dt_year  = str(self.dt.year)
