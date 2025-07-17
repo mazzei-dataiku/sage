@@ -48,7 +48,7 @@ def run_modules(self, dss_objs):
             if df.empty:
                 # no write
                 continue
-            instance_name = dss_funcs.get_dss_name(client)
+            instance_name = get_dss_name(client)
     return results
 
 
