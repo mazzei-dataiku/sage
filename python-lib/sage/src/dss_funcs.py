@@ -24,6 +24,28 @@ def get_dss_name(client):
     return instance_name
 
 
+def run_modules(self, client, instance_name, dss_objs):
+    directory = dss_objs.__path__[0]
+    for root, _, files in os.walk(directory):
+        for f in files:
+            if not f.endswith(".py") or f == "__init__.py":
+                continue
+            module_name = f[:-3]
+            path = root.replace(directory, "")
+            fp = os.path.join(root, f)
+            try:
+                spec = importlib.util.spec_from_file_location(module_name, fp)
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                if hasattr(module, 'main'):
+                    df = module.main(client)
+                    results.append([path, module_name, "load/run", True, None])
+            except Exception as e:
+                df = pd.DataFrame()
+                results.append([path, module_name, "load/run", False, e])
+    return results
+
+
 def collect_modules(dss_objs):
     modules = {}
     directory = dss_objs.__path__[0]
@@ -41,21 +63,3 @@ def collect_modules(dss_objs):
                 modules[module_name] = []
                 modules[module_name].append(l)
     return modules
-
-
-def run_modules(self, client, instance_name, dss_objs):
-    directory = dss_objs.__path__[0]
-    for root, _, files in os.walk(directory):
-        path = module_name[0]
-        fp = module_name[1]
-        try:
-            spec = importlib.util.spec_from_file_location(module_name, fp)
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
-            if hasattr(module, 'main'):
-                df = module.main(client)
-                results.append([path, module_name, "load/run", True, None])
-        except Exception as e:
-            df = pd.DataFrame()
-            results.append([path, module_name, "load/run", False, e])
-    return results
