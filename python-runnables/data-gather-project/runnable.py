@@ -31,7 +31,10 @@ class MyRunnable(Runnable):
             raise Exception("No categories or modules found")
         
         # Collect the modules && Run the modules
-        results = dss_funcs.run_modules(self, dss_objs)
+        local_client = dss_funcs.build_local_client()
+        for key in local_client.list_project_keys():
+            project_handle = local_client.get_project(project_key=key)
+        results = dss_funcs.run_modules(self, dss_objs, project_handle)
         
         # return results
         if results:
