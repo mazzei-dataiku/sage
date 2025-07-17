@@ -28,7 +28,3 @@ def main(project_handle):
         tdf = pd.DataFrame([d], columns=cols)
         df = pd.concat([df, tdf], ignore_index=True)
     return df
-
-
-if __name__ == "__main__":
-    main()
