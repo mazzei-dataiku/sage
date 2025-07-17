@@ -3,7 +3,7 @@ import pandas as pd
 import json
 import warnings
 
-
+# ---------- DATAIKU LOCAL FOLDERS ----------------------------
 def get_local_folder(folder_name):
     folder = dataiku.Folder(
         lookup = folder_name,
@@ -17,7 +17,7 @@ def get_local_folder(folder_name):
     return folder
 
 
-def create_folder(folder_name):
+def create_local_folder(folder_name):
     client = dataiku.api_client()
     project = client.get_default_project()    
     # Create Folder
@@ -42,6 +42,14 @@ def create_folder(folder_name):
     )
     return folder
 
+# ---------- DATAIKU REMOTE FOLDERS ----------------------------
+
+
+
+
+
+
+# ---------- DATAIKU LOCAL FOLDERS ----------------------------
 
 def write_folder_output(folder_name, path, data, data_type="DF"):
     folder = get_folder(folder_name)
