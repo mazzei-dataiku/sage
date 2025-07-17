@@ -39,3 +39,4 @@ class MyRunnable(Runnable):
             df = pd.DataFrame(results, columns=["path", "module_name", "step", "result", "message"])
             html = df.to_html()
             return html
+        raise Exception("FAILED TO RUN INSTANCE CHECKS")
