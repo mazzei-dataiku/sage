@@ -15,6 +15,7 @@ except:
 
 def run_modules(client, instance_name):
     directory = dss_categories.__path__[0]
+    results = []
     for root, _, files in os.walk(directory):
         for f in files:
             if not f.endswith(".py") or f == "__init__.py":
@@ -28,8 +29,10 @@ def run_modules(client, instance_name):
                 spec.loader.exec_module(module)
                 if hasattr(module, 'main'):
                     df = module.main(client)
+                    results.append([path, module_name, "load/run", True, None])
             except Exception as e:
                 df = pd.DataFrame()
+                results.append([path, module_name, "load/run", False, e])
                 print(f"Error importing or running ({path}) {module_name}: {e}")
 
 
