@@ -5,6 +5,8 @@ import re
 import importlib
 import pandas as pd
 
+from sage.src import dss_folder
+
 
 def build_local_client():
     client = dataiku.api_client()
