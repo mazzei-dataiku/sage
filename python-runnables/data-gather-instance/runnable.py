@@ -11,7 +11,7 @@ from sage.base_data import client_handle as dss_categories
 #sys.path.append('/path/to/your/library/directory')
 
 def run_modules(client, instance_name):
-    directory = dss_object.__path__[0]
+    directory = dss_categories.__path__[0]
     for root, _, files in os.walk(directory):
         for f in files:
             if not f.endswith(".py") or f == "__init__.py":
