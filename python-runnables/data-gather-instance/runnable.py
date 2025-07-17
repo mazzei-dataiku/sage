@@ -5,11 +5,11 @@ import os
 import importlib
 import pandas as pd
 
+from sage.src import dss_funcs
 try:
     from sage.base_data import client_handle as dss_objs
 except:
     dss_objs = False
-from sage.src import dss_funcs
 
 #import sys
 #sys.path.append('/path/to/your/library/directory')
