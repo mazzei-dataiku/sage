@@ -41,8 +41,8 @@ def run_modules(self, dss_objs):
                 module = importlib.util.module_from_spec(spec)
                 spec.loader.exec_module(module)
                 if hasattr(module, 'main'):
-                    client = build_local_client()
-                    df = module.main(client)
+                    local_client = build_local_client()
+                    df = module.main(local_client)
                     results.append([path, module_name, "load/run", True, None])
             except Exception as e:
                 df = pd.DataFrame()
@@ -52,8 +52,8 @@ def run_modules(self, dss_objs):
             if "instance_name" not in df.columns:
                 df["instance_name"] = get_dss_name(client)
             # write to blah
-            client = build_remote_client(self.sage_project_url, self.sage_project_api)
-            dss_folder.write_remote_folder(self, client, path, module_name, df)
+            remote_client = build_remote_client(self.sage_project_url, self.sage_project_api)
+            dss_folder.write_remote_folder(self, remote_client, path, module_name, df)
     return results
 
 
