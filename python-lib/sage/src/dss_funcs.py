@@ -2,7 +2,7 @@ import os
 
 
 def collect_modules(dss_objs):
-    d = {}
+    modules = {}
     directory = dss_objs.__path__[0]
     for root, _, files in os.walk(directory):
         for f in files:
@@ -13,8 +13,8 @@ def collect_modules(dss_objs):
             fp = os.path.join(root, f)
             l = [path, fp]
             if module_name in d.keys():
-                d[module_name].append(l)
+                modules[module_name].append(l)
             else:
-                d[module_name] = []
-                d[module_name].append(l)
-    return d
+                modules[module_name] = []
+                modules[module_name].append(l)
+    return modules
