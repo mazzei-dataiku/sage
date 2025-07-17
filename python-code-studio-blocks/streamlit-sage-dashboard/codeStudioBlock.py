@@ -1,12 +1,10 @@
+import dataiku
 import os, json, re, logging
+
 from dataiku.code_studio import CodeStudioBlock
-
 from block_utils import LibLocationPathReplacer, generate_python_codenv
-
 from distutils.version import LooseVersion
 
-# starting file       
-# settings folder     
 
 class MyCodeStudioBlock(CodeStudioBlock):
     def __init__(self, config, plugin_config):
@@ -38,7 +36,9 @@ class MyCodeStudioBlock(CodeStudioBlock):
         
         # get code env stuff
 
-        default_packages = "streamlit==1.9.2 altair==4.2.2 urllib3<2"
+        client = dataiku.api_client()
+        code_env_handle = client.get_code_env(env_name="plugin_sage-dashboard_managed", env_lang="PYTHON")
+        default_packages = " ".join(code_env_handle.get_settings().get_required_packages().split())
         generate_codenv, pyenv_path = generate_python_codenv(
             "STREAMLIT", self.config, template,
             default_packages, "/opt/dataiku/python-code-envs/pyenv-streamlit", "python3.11", env.get("globalCodeEnvsExtraSettings")
