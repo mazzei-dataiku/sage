@@ -28,7 +28,7 @@
         {
             "name": "sage_project_api",
             "label": "Sage Dashboard Main Host API",
-            "type": "STRING",
+            "type": "PASSWORD",
             "description": "API Key running as an ADMIN level user",
             "mandatory": true
         },
