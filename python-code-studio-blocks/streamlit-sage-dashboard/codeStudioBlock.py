@@ -5,6 +5,9 @@ from block_utils import LibLocationPathReplacer, generate_python_codenv
 
 from distutils.version import LooseVersion
 
+# starting file       __PROJECT_LIB_VERSIONED__/python/sage/streamlit/app.py
+# settings folder     __PROJECT_LIB_VERSIONED__/python/sage/streamlit
+
 class MyCodeStudioBlock(CodeStudioBlock):
     def __init__(self, config, plugin_config):
         self.config = config
@@ -13,7 +16,7 @@ class MyCodeStudioBlock(CodeStudioBlock):
     _ENTRYPOINT_FILE = "streamlit-entrypoint.sh"
     
     def _get_entrypoint_path(self):
-        entrypoint_path = self.config.get("startScript", "/opt/dataiku")
+        entrypoint_path = "/opt/dataiku"
         if entrypoint_path.endswith("/") or not entrypoint_path.endswith(".sh"):
             entrypoint_path = os.path.join(entrypoint_path, self._ENTRYPOINT_FILE)
         return entrypoint_path
