@@ -17,6 +17,20 @@
             "type": "STRING",
             "description": "",
             "mandatory": true
+        },
+        {
+            "name": "say_project_url",
+            "label": "Sage Dashboard Main Host URL",
+            "type": "STRING",
+            "description": "",
+            "mandatory": true
+        },
+        {
+            "name": "sage_project_api",
+            "label": "Sage Dashboard Main Host API",
+            "type": "STRING",
+            "description": "API Key running as an ADMIN level user",
+            "mandatory": true
         }
     ]
 }
