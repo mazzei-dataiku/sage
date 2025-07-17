@@ -31,12 +31,36 @@ class MyCodeStudioBlock(CodeStudioBlock):
         settings_path = "__PROJECT_LIB_VERSIONED__/python/sage/streamlit"
         enable_xsrf = False
         
+        # replace the lib locations in settings_path and open_in_path
+        replacer = LibLocationPathReplacer(spec)
+        start_file = replacer.replace_variable_by_path(start_file)
+        settings_path = replacer.replace_variable_by_path(settings_path)
         
-        
-        
+        # get code env stuff
+
+        default_packages = "streamlit==1.9.2 altair==4.2.2 urllib3<2"
+        generate_codenv, pyenv_path = generate_python_codenv("STREAMLIT", self.config, template, default_packages, "/opt/dataiku/python-code-envs/pyenv-streamlit", "python3.9", env.get("globalCodeEnvsExtraSettings"))
         
         
         return {"dockerfile":dockerfile}
 
     def build_launch(self, spec, env):
         return result
+
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# EOF
