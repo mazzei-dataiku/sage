@@ -15,27 +15,5 @@
             "mandatory": true
         }
     ],
-    "params": [
-        {
-            "name": "parameter2",
-            "label": "User-readable name",
-            "type": "INT",
-            "defaultValue" : 42
-        },
-        {
-            "name": "parameter8",
-            "label": "User-readable name",
-            "type": "SELECT",
-            "selectChoices": [
-                {
-                    "value": "val_x",
-                    "label": "display name for val_x"
-                },
-                {
-                    "value": "val_y",
-                    "label": "display name for val_y"
-                }
-            ]
-        }
-    ]
+    "params": []
 }
