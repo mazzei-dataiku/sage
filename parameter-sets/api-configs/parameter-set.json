@@ -1,15 +1,15 @@
 {
     "meta" : {
-        "label": "Parameter set api-configs",
-        "description": "",
+        "label": "API Keys Configuration",
+        "description": "Create new parameter sets per each node Host URL and their API keys",
         "icon": "fas fa-puzzle-piece"
     },
     "defaultDefinableInline": false,
     "defaultDefinableAtProjectLevel": false,
     "pluginParams": [
         {
-            "name": "parameter1",
-            "label": "User-readable name",
+            "name": "worker_url",
+            "label": "Worker Host URL",
             "type": "STRING",
             "description": "Some documentation for parameter1",
             "mandatory": true
