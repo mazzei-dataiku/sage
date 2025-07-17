@@ -34,9 +34,7 @@ class MyCodeStudioBlock(CodeStudioBlock):
         start_file = replacer.replace_variable_by_path(start_file)
         settings_path = replacer.replace_variable_by_path(settings_path)
         
-        # get code env stuff
-
-
+        # Default Packages
         default_packages = [
             "streamlit==1.46.1"
             "streamlit-aggrid"
