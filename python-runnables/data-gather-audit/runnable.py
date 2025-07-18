@@ -35,7 +35,7 @@ class MyRunnable(Runnable):
         # Open and read each log
         results = []
         df = pd.DataFrame()
-        for log in logs:
+        for log in logs[:2]:
             tdf = pd.read_json(log, lines=True)
             if df.empty:
                 df = tdf
