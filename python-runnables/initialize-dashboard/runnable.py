@@ -59,8 +59,8 @@ class MyRunnable(Runnable):
         file.delete()
         
         # Create the folders
-        get_folder(project_handle, folder_name)
-        get_folder(project_handle, folder_name)
+        get_folder(project_handle, "partitioned_data")
+        get_folder(project_handle, "base_data")
         
         
         return
