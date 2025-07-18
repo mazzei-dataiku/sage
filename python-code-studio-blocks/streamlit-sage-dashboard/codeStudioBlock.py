@@ -254,8 +254,6 @@ WORKDIR /home/dataiku
 
     
     def build_launch(self, spec, env):
-        if env['launchedFrom'] == 'WEBAPP' and not self.config.get("useInWebapps", False):
-            return spec
         port = self._get_port()
         spec['entrypoints'] = spec.get('entrypoints', []) + [self._get_entrypoint_path()]
         if spec.get('readinessProbeUrl', "") == "":
