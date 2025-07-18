@@ -61,3 +61,37 @@ def get_dss_commits(project_handle):
         }
         r = dataset.set_schema(schema=schema)
     return
+
+
+def create_scenarios(project_handle):
+    macros = tomllib.loads(t)
+    for key in macros:
+        # skip default
+        if key == "default":
+            continue
+        
+        # rebase and setup macro in step
+        trigger = json.loads(macros["default"]["trigger"])
+        step = json.loads(macros["default"]["step"])
+        step["params"]["runnableType"] = macros[key]["macro"]
+
+        # create or connect to scenario
+        try:
+            scenario_handle = project_handle.get_scenario(scenario_id=key)
+            settings = scenario_handle.get_settings()
+        except:
+            scenario_handle = project_handle.create_scenario(scenario_name=key, type="step_based")
+            settings = scenario_handle.get_settings()
+            
+        # Trigger
+        del settings.raw_triggers[:]
+        settings.raw_triggers.append(trigger)
+        
+        # Steps
+        del settings.raw_steps[:]
+        settings.raw_steps.append(step)
+        
+        # Save
+        settings.active = True
+        settings.save()
+    return
