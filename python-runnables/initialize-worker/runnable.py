@@ -14,8 +14,8 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
+        results = []
         for api_config in self.plugin_config["api_configs"]:
-            
             # Create a remote client
             worker_url = api_config["worker_url"]
             worker_api = api_config["worker_api"]
