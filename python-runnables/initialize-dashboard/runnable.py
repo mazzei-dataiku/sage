@@ -59,8 +59,8 @@ class MyRunnable(Runnable):
         file.delete()
         
         # Create the folders
-        dss_folder.get_folder(project_handle, "partitioned_data")
-        dss_folder.get_folder(project_handle, "base_data")
+        dss_folder.get_folder(self, project_handle, "partitioned_data")
+        dss_folder.get_folder(self, project_handle, "base_data")
         
         
         return
