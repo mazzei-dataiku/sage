@@ -19,7 +19,9 @@ class MyRunnable(Runnable):
             
             # 
             project_handle = create_worker(remote_client)
-        
+
+            # Create the DSS Commits Table
+            get_dss_commits(project_handle)
         
             
         return "123"       
