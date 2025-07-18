@@ -1,5 +1,4 @@
 from dataiku.runnables import Runnable
-import logging
 
 class MyRunnable(Runnable):
     def __init__(self, project_key, config, plugin_config):
@@ -14,7 +13,6 @@ class MyRunnable(Runnable):
         for api_config in self.plugin_config["api_configs"]:
             worker_url = api_config["worker_url"]
             worker_api = api_config["worker_api"]
-            logging.error(worker_url)
             
             
         return "123"       
