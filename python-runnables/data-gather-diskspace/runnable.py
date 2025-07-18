@@ -61,7 +61,6 @@ class MyRunnable(Runnable):
         del df["dot"]
         del df["directory"]
         
-        return df.to_html()
         # Get details on sizes - level_1
         df["level_1_size"] = 0
         for i,g in df.groupby(by=["level_1"]):
