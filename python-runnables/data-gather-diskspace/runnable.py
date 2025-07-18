@@ -70,7 +70,7 @@ class MyRunnable(Runnable):
             size = get_size(d)
             df.loc[df["level_1"] == i[0], "level_1_size"] = size
             
-        return df.to_html()
+        return "df.to_html()"
             
         # Filter size on a base number (1gb / adjustable)
         gb = 1000000 * 1
