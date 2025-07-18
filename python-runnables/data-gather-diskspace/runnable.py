@@ -103,7 +103,7 @@ class MyRunnable(Runnable):
             dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
             results.append(["write/save", True, None])
         except Exception as e:
-            results.append(["write/save", True, e])
+            results.append(["write/save", False, e])
         
         # return results
         if results:
