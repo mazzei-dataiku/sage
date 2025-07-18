@@ -4,7 +4,6 @@ import os
 import subprocess
 import pandas as pd
 from datetime import datetime, date, timedelta
-import logging
 
 from dataiku.runnables import Runnable
 
@@ -65,11 +64,10 @@ class MyRunnable(Runnable):
         # Get details on sizes - level_1
         df["level_1_size"] = 0
         for i,g in df.groupby(by=["level_1"]):
-            logging.error(f"the value of dir name is: {i}")
             size = get_size(i)
             df.loc[df["level_1"] == i[0], "level_1_size"] = size
             
-        return "df.to_html()"
+        return df.to_html()
             
         # Filter size on a base number (1gb / adjustable)
         gb = 1000000 * 1
