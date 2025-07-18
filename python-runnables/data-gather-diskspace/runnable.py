@@ -91,7 +91,7 @@ class MyRunnable(Runnable):
                 & (df["level_2"] == i[1])
                 & (df["level_3"] == i[2]), "level_3_size"] = size
             
-        results.append([path, module_name, "read/parse", False, None])
+        results.append(["read/parse", False, None])
         
         # loop topics and save data
         remote_client = build_remote_client(self.sage_project_url, self.sage_project_api)
@@ -101,13 +101,13 @@ class MyRunnable(Runnable):
         try:
             write_path = f"/{instance_name}/disk_space/diskspace/{dt_year}/{dt_month}/{dt_day}/data.csv"
             dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
-            results.append([path, module_name, "write/save", False, None])
+            results.append(["write/save", False, None])
         except Exception as e:
-            results.append([path, module_name, "write/save", True, e])
+            results.append(["write/save", True, e])
         
         # return results
         if results:
-            df = pd.DataFrame(results, columns=["path", "module_name", "step", "result", "message"])
+            df = pd.DataFrame(results, columns=["step", "result", "message"])
             html = df.to_html()
             return html
         raise Exception("FAILED TO RUN INSTANCE CHECKS")
