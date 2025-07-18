@@ -24,13 +24,25 @@ class MyRunnable(Runnable):
             remote_client = dss_funcs.build_remote_client(worker_url, worker_api)
             
             # Create the Sage Worker Project
-            project_handle = create_worker(remote_client, self.sage_worker_key)
+            cont = True
+            try:
+                project_handle = create_worker(remote_client, self.sage_worker_key)
+            except:
+                cont = False
 
             # Create the DSS Commits Table
-            get_dss_commits(project_handle)
+            if cont:
+                try:
+                    get_dss_commits(project_handle)
+                except:
+                    cont = False
             
             # Create the Phone Home Scenarios
-            create_scenarios(project_handle)
+            if cont:
+                try:
+                    create_scenarios(project_handle)
+                except:
+                    cont = False
         
             
         return "123"       
