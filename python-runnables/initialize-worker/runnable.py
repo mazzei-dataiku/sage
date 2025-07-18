@@ -50,5 +50,8 @@ class MyRunnable(Runnable):
                     cont = False
                     results.append([worker_url, "scenarios", False, e])
         
-            
-        return "123"       
+        # return results
+        if results:
+            df = pd.DataFrame(results, columns=["worker_url", "step", "results", "message"])
+            html = df.to_html()
+            return html      
