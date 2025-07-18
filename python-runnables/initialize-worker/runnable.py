@@ -27,7 +27,9 @@ class MyRunnable(Runnable):
             cont = True
             try:
                 project_handle = create_worker(remote_client, self.sage_worker_key)
-            except:
+                results.append([worker_url, "project_handle", True, None])
+            except Exception as e:
+                results.append([worker_url, "project_handle", False, e])
                 cont = False
 
             # Create the DSS Commits Table
