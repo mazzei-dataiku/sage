@@ -26,4 +26,4 @@ class MyRunnable(Runnable):
             except:
                 raise Exception("CANNOT FIND PLUGIN")
         
-    return os.getcwd()
+        return os.getcwd()
