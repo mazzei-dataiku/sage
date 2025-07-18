@@ -26,14 +26,22 @@ class MyRunnable(Runnable):
             worker_api = api_config["worker_api"]
             remote_client = dss_funcs.build_remote_client(worker_url, worker_api)
             
-            # Create the Sage Worker Project
+            # Install Plugin if not found
             cont = True
             try:
-                project_handle = dss_init.create_worker(remote_client, self.sage_worker_key)
-                results.append([worker_url, "project_handle", True, None])
+                dss_init.install_plugin(self, remote_client, repo)
             except Exception as e:
                 results.append([worker_url, "project_handle", False, e])
                 cont = False
+            
+            # Create the Sage Worker Project
+            if cont:
+                try:
+                    project_handle = dss_init.create_worker(remote_client, self.sage_worker_key)
+                    results.append([worker_url, "project_handle", True, None])
+                except Exception as e:
+                    results.append([worker_url, "project_handle", False, e])
+                    cont = False
 
             # Create the DSS Commit Table
             if cont:
