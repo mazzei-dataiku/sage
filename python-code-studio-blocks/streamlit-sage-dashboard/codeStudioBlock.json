@@ -10,5 +10,14 @@
     "isAdvanced": false,
     "uiDisplayPriority": 42,
     
-    "params": []
+    "params": [
+        {
+            "name": "port",
+            "label": "Port",
+            "type": "INT",
+            "description": "Port used by Streamlit",
+            "mandatory": true,
+            "defaultValue": 8181
+        }
+    ]
 }
