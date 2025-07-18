@@ -43,14 +43,12 @@ class MyRunnable(Runnable):
             except OSError as e:
                 raise Exception(f"Error deleting directory '{project_path}': {e}")
 
-        return
-    
+        # Copy the streamlit application
         try:
-            shutil.copytree(source_path, destination_directory)
-            print(f"Directory '{source_directory}' and its contents copied to '{destination_directory}' successfully.")
+            shutil.copytree(source_path, project_path)
         except FileExistsError:
-            print(f"Error: Destination directory '{destination_directory}' already exists. Please choose a non-existent directory.")
+            raise Exception(f"Error: Destination directory '{destination_directory}' already exists. Please choose a non-existent directory.")
         except Exception as e:
-            print(f"An error occurred: {e}")
+            raise Exception(f"An error occurred: {e}")
         
         return os.getcwd()
