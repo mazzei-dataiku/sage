@@ -3,7 +3,7 @@ from sage.src import dss_funcs
 import os
 import subprocess
 import pandas as pd
-from datetime import date, timedelta
+from datetime import datetime, date, timedelta
 
 from dataiku.runnables import Runnable
 
