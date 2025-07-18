@@ -16,6 +16,14 @@ class MyRunnable(Runnable):
         
         # change directory and get audit logs
         root_path = local_client.get_instance_info().raw["dataDirPath"]
-        os.chdir(root_path)
+        try:
+            path = f"{root_path}/plugins/installed/sage"
+            os.chdir(root_path)
+        except:
+            try:
+                path = f"{root_path}/plugins/installed/sage"
+                os.chdir(root_path)
+            except:
+                raise Exception("CANNOT FIND PLUGIN")
         
-    return
+    return os.getcwd()
