@@ -22,15 +22,18 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
+        # Get local client and name
         local_client = build_local_client()
         instance_name = dss_funcs.get_dss_name(local_client)
         
+        # change directory and get audit logs
         root_path = local_client.get_instance_info().raw["dataDirPath"]
         audit_path = f"{root_path}/run/audit"
         os.chdir(audit_path)
         directory_path = "./"
         logs = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
 
+        # Open and read each log
         df = pd.DataFrame()
         for log in logs:
             tdf = pd.read_json(log, lines=True)
@@ -39,9 +42,13 @@ class MyRunnable(Runnable):
             else:
                 df = pd.concat([df, tdf], ignore_index=True)
 
+        # get only yesterdays log
         today = date.today()
         yesterday = today - timedelta(days=1)
         df = df[
             (df["timestamp"].dt.date < today)
             & (df["timestamp"].dt.date >= yesterday)
         ]
+        
+        # loop topics and save data
+        
