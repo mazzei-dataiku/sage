@@ -58,9 +58,9 @@ class MyRunnable(Runnable):
             try:
                 write_path = f"/{instance_name}/audit/{topic}/{dt_year}/{dt_month}/{dt_day}/data.csv"
                 dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
-                results.append(["write/save", False, None])
+                results.append(["write/save", True, None])
             except Exception as e:
-                results.append(["write/save", True, e])
+                results.append(["write/save", False, e])
             
         # return results
         if results:
