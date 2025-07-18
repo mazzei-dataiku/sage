@@ -3,7 +3,6 @@ from sage.src import dss_funcs, dss_folder
 import os
 import pandas as pd
 from datetime import datetime, date, timedelta
-import logging
 
 from dataiku.runnables import Runnable
 
@@ -32,7 +31,6 @@ class MyRunnable(Runnable):
         os.chdir(audit_path)
         directory_path = "./"
         logs = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
-        logging.error(logs)
 
         # Open and read each log
         results = []
@@ -40,7 +38,6 @@ class MyRunnable(Runnable):
         yesterday = today - timedelta(days=1)
         df = pd.DataFrame()
         for log in logs:
-            logging.error(f"reading audit log: {log}")
             tdf = pd.read_json(log, lines=True)
             if df.empty:
                 df = tdf
