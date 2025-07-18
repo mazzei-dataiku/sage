@@ -17,4 +17,4 @@ class MyRunnable(Runnable):
             worker_api = api_config[2]
             logging.error(api_config)
             
-        raise Exception("unimplemented")        
+        raise "123"       
