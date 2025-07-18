@@ -105,7 +105,12 @@ class MyRunnable(Runnable):
         except Exception as e:
             results.append([path, module_name, "write/save", True, e])
         
-        
+        # return results
+        if results:
+            df = pd.DataFrame(results, columns=["path", "module_name", "step", "result", "message"])
+            html = df.to_html()
+            return html
+        raise Exception("FAILED TO RUN INSTANCE CHECKS")
         
         
         
