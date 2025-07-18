@@ -11,7 +11,7 @@ def get_folder(project_handle, folder_name):
     try:
         folder.get_id()
     except:
-        folder = create_folder(folder_name)
+        folder = create_folder(project_handle, folder_name)
     return
 
 
