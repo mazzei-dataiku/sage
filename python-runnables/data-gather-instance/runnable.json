@@ -2,7 +2,8 @@
     "meta": {
         "label": "Sage Insights - Data Gather Instance level",
         "description": "Data gather the instance level metadata",
-        "icon": "fas fa-puzzle-piece"
+        "icon": "fas fa-puzzle-piece",
+        "category": "sage insights"
     },
     "impersonate": false,
     "params": [],

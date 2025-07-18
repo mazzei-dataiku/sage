@@ -2,7 +2,8 @@
     "meta": {
         "label": "Sage Insights - Initialize Worker Host",
         "description": "Create worker host project and initial datasets / scenarios",
-        "icon": "fas fa-puzzle-piece"
+        "icon": "fas fa-puzzle-piece",
+        "category": "sage insights"
     },
     "impersonate": false,
     "params": [],
