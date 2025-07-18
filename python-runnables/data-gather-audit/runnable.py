@@ -36,6 +36,8 @@ class MyRunnable(Runnable):
 
         # Open and read each log
         results = []
+        today = date.today()
+        yesterday = today - timedelta(days=1)
         df = pd.DataFrame()
         for log in logs:
             logging.error(f"reading audit log: {log}")
@@ -44,15 +46,10 @@ class MyRunnable(Runnable):
                 df = tdf
             else:
                 df = pd.concat([df, tdf], ignore_index=True)
-
-        # get only yesterdays log
-        today = date.today()
-        yesterday = today - timedelta(days=1)
-        df = df[
-            (df["timestamp"].dt.date < today)
-            & (df["timestamp"].dt.date >= yesterday)
-        ]
-        return str(len(df))
+            df = df[
+                (df["timestamp"].dt.date < today)
+                & (df["timestamp"].dt.date >= yesterday)
+            ]
         results.append(["read/parse", True, None])
         
         # loop topics and save data
