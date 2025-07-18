@@ -72,12 +72,10 @@ def create_scenarios(project_handle):
         # skip default
         if key == "default":
             continue
-        
         # rebase and setup macro in step
         trigger = json.loads(macros["default"]["trigger"])
         step = json.loads(macros["default"]["step"])
         step["params"]["runnableType"] = macros[key]["macro"]
-
         # create or connect to scenario
         try:
             scenario_handle = project_handle.get_scenario(scenario_id=key)
@@ -85,15 +83,12 @@ def create_scenarios(project_handle):
         except:
             scenario_handle = project_handle.create_scenario(scenario_name=key, type="step_based")
             settings = scenario_handle.get_settings()
-            
         # Trigger
         del settings.raw_triggers[:]
         settings.raw_triggers.append(trigger)
-        
         # Steps
         del settings.raw_steps[:]
         settings.raw_steps.append(step)
-        
         # Save
         settings.active = True
         settings.save()
