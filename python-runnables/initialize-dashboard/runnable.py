@@ -20,11 +20,11 @@ class MyRunnable(Runnable):
         # change directory and get audit logs
         root_path = local_client.get_instance_info().raw["dataDirPath"]
         try:
-            source_path = f"{root_path}/plugins/installed/sage"
+            source_path = f"{root_path}/plugins/installed/sage/streamlit"
             os.path.isdir(source_path)
         except:
             try:
-                source_path = f"{root_path}/plugins/dev/sage"
+                source_path = f"{root_path}/plugins/dev/sage/streamlit"
                 os.path.isdir(source_path)
             except:
                 raise Exception("CANNOT FIND PLUGIN")
