@@ -24,7 +24,7 @@ class MyRunnable(Runnable):
             os.chdir(path)
         except:
             try:
-                path = f"{root_path}/plugins/installed/sage"
+                path = f"{root_path}/plugins/dev/sage"
                 os.chdir(path)
             except:
                 raise Exception("CANNOT FIND PLUGIN")
