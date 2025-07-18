@@ -52,4 +52,4 @@ class MyRunnable(Runnable):
         except Exception as e:
             raise Exception(f"An error occurred: {e}")
         
-        return os.getcwd()
+        return
