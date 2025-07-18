@@ -14,20 +14,6 @@ def write_remote_folder_output(self, client, path, df):
 
 
 # ---------- DATAIKU LOCAL FOLDERS -----------------------------
-def get_folder(folder_name):
-    import dataiku
-    folder = dataiku.Folder(
-        lookup = folder_name,
-        project_key = dataiku.default_project_key(),
-        ignore_flow = True
-        )
-    try:
-        folder.get_id()
-    except:
-        folder = create_folder(folder_name)
-    return folder
-
-
 def create_folder(project_handle, folder_name):
     project_handle = client.get_default_project()    
     folder_handle = project_handle.create_managed_folder(
