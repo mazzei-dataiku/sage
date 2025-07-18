@@ -58,6 +58,10 @@ class MyCodeStudioBlock(CodeStudioBlock):
         entrypoint_script = """
 #! /bin/bash
 
+if [ ! -f {start_file} ]; then
+    mkdir -p $(dirname {start_file})
+fi
+
 USER=dataiku
 HOME=/home/dataiku
 
