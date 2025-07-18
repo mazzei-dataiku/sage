@@ -56,6 +56,7 @@ def install_plugin(self, remote_client):
     settings.settings["config"]["sage_project_api"] = self.sage_project_api
     settings.settings["config"]["sage_project_url"] = self.sage_project_url
     settings.settings["config"]["sage_worker_key"]  = self.sage_worker_key
+    settings.settings["codeEnvName"] = "plugin_sage_managed"
     settings.save()
     
     return
