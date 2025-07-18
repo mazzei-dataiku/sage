@@ -1,14 +1,10 @@
-try:
-    from sage.base_data import client_handle as dss_objs
-except:
-    dss_objs = False
 from sage.src import dss_funcs
 
+import os
 import pandas as pd
-from datetime import datetime
+from datetime import date, timedelta
 
 from dataiku.runnables import Runnable
-from dataiku.customrecipe import get_recipe_config
 
 
 # Run Macro
