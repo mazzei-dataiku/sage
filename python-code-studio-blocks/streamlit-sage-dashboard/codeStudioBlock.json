@@ -10,14 +10,5 @@
     "isAdvanced": false,
     "uiDisplayPriority": 42,
     
-    "params": [
-        {
-            "name": "useInWebapps",
-            "label": "Launch for Webapps",
-            "type": "BOOLEAN",
-            "description": "Should this entrypoint be launched when starting this template as a Code Studio Webapp",
-            "mandatory": true,
-            "defaultValue": true
-        }
-    ]
+    "params": []
 }
