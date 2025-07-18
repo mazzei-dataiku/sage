@@ -8,6 +8,7 @@
     "impersonate": false,
     "params": [],
     "permissions": [],
+    "requiresGlobalAdmin": true,
     "resultType": "HTML",
     "resultLabel": "my production",
     "extension": "txt",
