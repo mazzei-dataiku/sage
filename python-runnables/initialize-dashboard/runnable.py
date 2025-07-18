@@ -1,4 +1,5 @@
 from sage.src import dss_funcs
+import os
 
 from dataiku.runnables import Runnable
 
