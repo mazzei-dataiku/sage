@@ -36,6 +36,7 @@ class MyRunnable(Runnable):
             raise Exception("CANNOT FIND PROJECT or PROJECT LIBRARY")
         
         # Delete the current running version
+        project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python/sage"
         if os.path.exists(project_path) and os.path.isdir(project_path):
             try:
                 shutil.rmtree(project_path)
