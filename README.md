@@ -16,4 +16,5 @@ This dashboard is designed to give Dataiku Admins insights into the DSS instance
 
 Due to the web application being built on Streamlit, installation requires a bit of dedicated code use. Hoping this changes in later DSS versions.
 
-**(V13.5.5 and below)**
+**TESTED ON VERSIONS:**
+1. v13.5.5
