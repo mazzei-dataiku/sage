@@ -38,7 +38,7 @@ class MyRunnable(Runnable):
         results = []
         df = pd.DataFrame()
         for log in logs:
-            logging.error(log)
+            logging.error(f"reading audit log: {log}")
             tdf = pd.read_json(log, lines=True)
             if df.empty:
                 df = tdf
