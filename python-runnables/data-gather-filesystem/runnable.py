@@ -42,7 +42,7 @@ class MyRunnable(Runnable):
         
         # Write and Save output
         try:
-            write_path = f"/{instance_name}/disk_space/diskspace/{dt_year}/{dt_month}/{dt_day}/data.csv"
+            write_path = f"/{instance_name}/disk_space/filesystem/{dt_year}/{dt_month}/{dt_day}/data.csv"
             dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
             results.append(["write/save", True, None])
         except Exception as e:
