@@ -21,7 +21,7 @@ class MyRunnable(Runnable):
             # Create a remote client
             worker_url = api_config["worker_url"]
             worker_api = api_config["worker_api"]
-            remote_client = 123
+            remote_client = dss_funcs.build_remote_client(worker_url, worker_api)
             
             # Create the Sage Worker Project
             project_handle = create_worker(remote_client, self.sage_worker_key)
