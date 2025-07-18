@@ -24,6 +24,44 @@ macro = "pyrunnable_sage_data-gather-filesystem"
 """
 
 
+def install_plugin(self, remote_client, repo):
+    # Only install if not found
+    sage_found = False
+    for plugin in remote_client.list_plugins():
+        if plugin["id"] == "sage":
+            sage_found = True
+    if sage_found:
+        return
+    
+    # install the plugin
+    plugin_install = remote_client.install_plugin_from_git(repository_url=repo, checkout='master', subpath=None)
+    r = plugin_install.wait_for_result()
+    r = plugin_handle.get_result()
+    if r["messages"]["warning"] or r["messages"]["error"] or r["messages"]["fatal"]:
+        raise Exception(r["messages"]["messages"])
+    
+    # connect to the plugin handle
+    plugin_handle = remote_client.get_plugin(plugin_id="sage")
+    
+    # create the code-env
+    code_env = plugin_handle.create_code_env()
+    r = code_env.wait_for_result()
+    r = code_env.get_result()
+    if r["messages"]["warning"] or r["messages"]["error"] or r["messages"]["fatal"]:
+        raise Exception(r["messages"]["messages"])
+        
+    # Configure SAGE
+    settings = plugin_handle.get_settings()
+    settings.settings["config"]["sage_project_key"] = self.sage_project_key
+    settings.settings["config"]["sage_project_api"] = self.sage_project_api
+    settings.settings["config"]["sage_project_url"] = self.sage_project_url
+    settings.settings["config"]["sage_worker_key"]  = self.sage_worker_key
+    settings.save()
+    
+    return
+
+
+
 def create_worker(client, sage_worker_key):
     if "SAGE_WORKER" not in client.list_project_keys():
         project_handle = client.create_project(project_key=sage_worker_key, name=sage_worker_key, owner="admin")
