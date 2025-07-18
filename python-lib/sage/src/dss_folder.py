@@ -16,7 +16,6 @@ def get_folder(project_handle, folder_name):
 
 
 def create_folder(project_handle, folder_name):
-    project_handle = client.get_default_project()    
     folder_handle = project_handle.create_managed_folder(
         name = folder_name,
         connection_name = "filesystem_folders"
