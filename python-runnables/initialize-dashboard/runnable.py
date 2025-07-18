@@ -1,4 +1,4 @@
-from sage.src import dss_funcs
+from sage.src import dss_funcs, dss_folder
 import os
 import shutil
 
@@ -59,8 +59,8 @@ class MyRunnable(Runnable):
         file.delete()
         
         # Create the folders
-        get_folder(project_handle, "partitioned_data")
-        get_folder(project_handle, "base_data")
+        dss_folder.get_folder(project_handle, "partitioned_data")
+        dss_folder.get_folder(project_handle, "base_data")
         
         
         return
