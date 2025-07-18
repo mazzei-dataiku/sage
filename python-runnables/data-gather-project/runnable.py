@@ -6,7 +6,6 @@ from sage.src import dss_funcs
 
 import pandas as pd
 from datetime import datetime
-import logging
 
 from dataiku.runnables import Runnable
 
@@ -34,7 +33,6 @@ class MyRunnable(Runnable):
         results = []
         for key in local_client.list_project_keys():
             project_handle = local_client.get_project(project_key=key)
-            logging.info(key)
             results += dss_funcs.run_modules(self, dss_objs, project_handle, key)
         
         # return results
