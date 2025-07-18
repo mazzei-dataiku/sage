@@ -9,10 +9,8 @@ from datetime import datetime
 import logging
 
 from dataiku.runnables import Runnable
-from dataiku.customrecipe import get_recipe_config
 
 
-# Run Macro
 class MyRunnable(Runnable):
     def __init__(self, project_key, config, plugin_config):
         self.project_key = project_key
