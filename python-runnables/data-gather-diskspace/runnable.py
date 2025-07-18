@@ -69,7 +69,7 @@ class MyRunnable(Runnable):
             df.loc[df["level_1"] == i[0], "level_1_size"] = size
             
         # Filter size on a base number (1gb / adjustable)
-        gb = 1000000 * self.config.get("min_disk_space", 1)
+        gb = 1000000 * 1
         df = df[df["level_1_size"] >= gb]
 
         # Get details on sizes - level_2
