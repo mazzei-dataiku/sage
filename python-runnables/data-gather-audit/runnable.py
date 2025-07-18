@@ -33,12 +33,12 @@ class MyRunnable(Runnable):
         directory_path = "./"
         logs = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
         logging.error(logs)
-        return
 
         # Open and read each log
         results = []
         df = pd.DataFrame()
-        for log in logs[:2]:
+        for log in logs:
+            logging.error(log)
             tdf = pd.read_json(log, lines=True)
             if df.empty:
                 df = tdf
