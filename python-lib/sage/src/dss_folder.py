@@ -28,11 +28,10 @@ def get_folder(folder_name):
     return folder
 
 
-def create_folder(client, folder_name):
-    client = dataiku.api_client()
-    project = client.get_default_project()    
+def create_folder(project_handle, folder_name):
+    project_handle = client.get_default_project()    
     # Create Folder
-    folder_handle = project.create_managed_folder(
+    folder_handle = project_handle.create_managed_folder(
         name = folder_name,
         connection_name = "filesystem_folders"
     )
@@ -45,10 +44,4 @@ def create_folder(client, folder_name):
         settings.add_time_partitioning_dimension("date", period='DAY')
         settings.set_partitioning_file_pattern("%{instance_name}/%{category}/%{module}/%Y/%M/%D/.*")
         settings.save()
-    # Return Folder object
-    folder = dataiku.Folder(
-        lookup = folder_name,
-        ignore_flow = True,
-        project_key = dataiku.default_project_key()
-    )
-    return folder
+    return
