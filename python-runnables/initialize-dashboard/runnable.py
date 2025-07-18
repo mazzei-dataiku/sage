@@ -59,6 +59,8 @@ class MyRunnable(Runnable):
         file.delete()
         
         # Create the folders
+        get_folder(project_handle, folder_name)
+        get_folder(project_handle, folder_name)
         
         
         return
