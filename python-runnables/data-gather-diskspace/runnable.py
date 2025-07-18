@@ -37,10 +37,13 @@ class MyRunnable(Runnable):
         
         # change directory and get audit logs
         root_path = local_client.get_instance_info().raw["dataDirPath"]
-        audit_path = f"{root_path}/run/audit"
-        os.chdir(audit_path)
+        os.chdir(root_path)
         
-        
+        # Find directories maxdepth
+        cmd = "find . -maxdepth 3 -type d"
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, check=True)
+        directories = result.stdout.split("\n")
+        directories.remove(".")
         
         
         
