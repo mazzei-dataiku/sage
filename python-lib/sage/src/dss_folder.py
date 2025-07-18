@@ -1,7 +1,6 @@
 import dataiku
 
 
-
 # ---------- DATAIKU LOCAL FOLDERS -----------------------------
 def get_folder(folder_name):
     folder = dataiku.Folder(
