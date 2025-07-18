@@ -45,9 +45,50 @@ class MyRunnable(Runnable):
         directories = result.stdout.split("\n")
         directories.remove(".")
         
+        # turn into a df
+        df = pd.DataFrame(directories, columns=["directory"])
         
+        # remove jupyter-run / .git -- permission issues with sudo stuff
+        df = df[~df["directory"].str.contains("jupyter-run")]
+        df = df[~df["directory"].str.contains(".git")]
+
+        # Explode directory
+        cols = ["dot", "level_1", "level_2", "level_3"]
+        df[cols] = df["directory"].str.split("/",  expand=True)
+
+        # remove columns
+        del df["dot"]
+        del df["directory"]
         
-        
+        # Get details on sizes - level_1
+        df["level_1_size"] = 0
+        for i,g in df.groupby(by=["level_1"]):
+            d = "/".join(i)
+            size = get_size(d)
+            df.loc[df["level_1"] == i[0], "level_1_size"] = size
+            
+        # Filter size on a base number (1gb / adjustable)
+        gb = 1000000 * self.config.get("min_disk_space", 1)
+        df = df[df["level_1_size"] >= gb]
+
+        # Get details on sizes - level_2
+        df["level_2_size"] = 0
+        for i,g in df.groupby(by=["level_1", "level_2"]):
+            d = "/".join(i)
+            size = get_size(d)
+            df.loc[
+                (df["level_1"] == i[0])
+                & (df["level_2"] == i[1]), "level_2_size"] = size
+
+        # Get details on sizes - level_3
+        df["level_3_size"] = 0
+        for i,g in df.groupby(by=["level_1", "level_2", "level_3"]):
+            d = "/".join(i)
+            size = get_size(d)
+            df.loc[
+                (df["level_1"] == i[0])
+                & (df["level_2"] == i[1])
+                & (df["level_3"] == i[2]), "level_3_size"] = size
         
         
         
