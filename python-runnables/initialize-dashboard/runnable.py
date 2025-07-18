@@ -31,11 +31,18 @@ class MyRunnable(Runnable):
             raise Exception("CANNOT FIND PLUGIN")
             
         # Get Dashboard library directory
-        project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python"
+        project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python/sage"
         if not os.path.isdir(project_path):
             raise Exception("CANNOT FIND PROJECT or PROJECT LIBRARY")
         
-        return
+        # Delete the current running version
+        if os.path.exists(directory_path) and os.path.isdir(directory_path):
+            try:
+                shutil.rmtree(directory_path)
+            except OSError as e:
+                raise Exception(f"Error deleting directory '{directory_path}': {e}")
+
+
     
         try:
             shutil.copytree(source_path, destination_directory)
