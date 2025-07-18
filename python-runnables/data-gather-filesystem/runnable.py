@@ -39,7 +39,7 @@ class MyRunnable(Runnable):
         df = pd.DataFrame(data, columns=["filesystem", "size", "used", "available", "used_pct", "mounted_on"]).dropna()
         df['used_pct'] = df['used_pct'].str.replace(r'[^a-zA-Z0-9\s]', '', regex=True)
         df = df[~df["filesystem"].isin(["devtmpfs", "tmpfs"])]
-        results.append(["write/save", True, None])
+        results.append(["read/parse", True, None])
 
         # Write and Save output
         df["instance_name"] = instance_name
