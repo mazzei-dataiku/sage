@@ -24,11 +24,11 @@ macro = "pyrunnable_sage_data-gather-filesystem"
 """
 
 
-def create_worker(client):
+def create_worker(client, sage_worker_key):
     if "SAGE_WORKER" not in client.list_project_keys():
-        project_handle = client.create_project(project_key="SAGE_WORKER", name="SAGE WORKER", owner="admin")
+        project_handle = client.create_project(project_key=sage_worker_key, name=sage_worker_key, owner="admin")
     else:
-        project_handle = client.get_project(project_key="SAGE_WORKER")
+        project_handle = client.get_project(project_key=sage_worker_key)
     return project_handle
 
 
