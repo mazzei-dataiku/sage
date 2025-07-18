@@ -42,7 +42,7 @@ class MyRunnable(Runnable):
             except OSError as e:
                 raise Exception(f"Error deleting directory '{project_path}': {e}")
 
-
+        return
     
         try:
             shutil.copytree(source_path, destination_directory)
