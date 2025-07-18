@@ -36,7 +36,7 @@ def install_plugin(self, remote_client):
     # install the plugin
     plugin_install = remote_client.install_plugin_from_git(repository_url=self.repo, checkout='master', subpath=None)
     r = plugin_install.wait_for_result()
-    r = plugin_handle.get_result()
+    r = plugin_install.get_result()
     if r["messages"]["warning"] or r["messages"]["error"] or r["messages"]["fatal"]:
         raise Exception(r["messages"]["messages"])
     
