@@ -11,8 +11,9 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
-        # {'$$hashKey': 'object:6605', 'worker_url': 'https://mazzei-designer.fe-aws.dkucloud-dev.com', 'worker_api': 'dkuaps-MSleUwXxL2lCXEMQZVwiJNjMHfS0zIJ2'}
         for api_config in self.plugin_config["api_configs"]:
-            logging.error(api_config)
+            worker_url = api_config["worker_url"]
+            worker_api= api_config["worker_api"]
             
-        raise "123"       
+            
+        return "123"       
