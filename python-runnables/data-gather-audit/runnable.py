@@ -32,6 +32,8 @@ class MyRunnable(Runnable):
         os.chdir(audit_path)
         directory_path = "./"
         logs = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
+        logging.error(logs)
+        return
 
         # Open and read each log
         results = []
