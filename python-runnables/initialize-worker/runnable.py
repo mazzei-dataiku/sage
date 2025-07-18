@@ -1,5 +1,7 @@
 from sage.src import dss_funcs
 
+import pandas as pd
+
 from dataiku.runnables import Runnable
 
 class MyRunnable(Runnable):
