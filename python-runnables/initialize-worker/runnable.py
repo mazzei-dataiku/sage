@@ -32,19 +32,23 @@ class MyRunnable(Runnable):
                 results.append([worker_url, "project_handle", False, e])
                 cont = False
 
-            # Create the DSS Commits Table
+            # Create the DSS Commit Table
             if cont:
                 try:
                     get_dss_commits(project_handle)
-                except:
+                    results.append([worker_url, "dss_commit", True, None])
+                except Exception as e:
                     cont = False
+                    results.append([worker_url, "dss_commit", False, e])
             
             # Create the Phone Home Scenarios
             if cont:
                 try:
                     create_scenarios(project_handle)
-                except:
+                    results.append([worker_url, "scenarios", True, None])
+                except Exception as e:
                     cont = False
+                    results.append([worker_url, "scenarios", False, e])
         
             
         return "123"       
