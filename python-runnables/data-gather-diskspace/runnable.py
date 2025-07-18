@@ -48,6 +48,7 @@ class MyRunnable(Runnable):
         
         # turn into a df
         df = pd.DataFrame(directories, columns=["directory"])
+        return df.to_html()
         
         # remove jupyter-run / .git -- permission issues with sudo stuff
         df = df[~df["directory"].str.contains("jupyter-run")]
