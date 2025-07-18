@@ -48,7 +48,6 @@ class MyRunnable(Runnable):
         
         # turn into a df
         df = pd.DataFrame(directories, columns=["directory"])
-        return df.to_html()
         
         # remove jupyter-run / .git -- permission issues with sudo stuff
         df = df[~df["directory"].str.contains("jupyter-run")]
@@ -62,6 +61,7 @@ class MyRunnable(Runnable):
         del df["dot"]
         del df["directory"]
         
+        return df.to_html()
         # Get details on sizes - level_1
         df["level_1_size"] = 0
         for i,g in df.groupby(by=["level_1"]):
