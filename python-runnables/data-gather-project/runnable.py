@@ -6,6 +6,7 @@ from sage.src import dss_funcs
 
 import pandas as pd
 from datetime import datetime
+import logging
 
 from dataiku.runnables import Runnable
 from dataiku.customrecipe import get_recipe_config
