@@ -20,7 +20,7 @@ class MyCodeStudioBlock(CodeStudioBlock):
         return entrypoint_path
     
     def _get_port(self):
-        return 8181
+        return self.config.get("port", 8181)
         
     def build_spec(self, spec, env, template):
         port = self._get_port()
