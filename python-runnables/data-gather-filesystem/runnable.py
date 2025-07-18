@@ -24,3 +24,17 @@ class MyRunnable(Runnable):
         # Get local client and name
         local_client = dss_funcs.build_local_client()
         instance_name = dss_funcs.get_dss_name(local_client)
+        
+        cmd = "df"
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, check=True)
+        result = result.stdout.split("\n")
+        result.pop(0)
+        data = []
+        for line in result:
+            line = " ".join(line.split())
+            line = line.split(" ")
+            data.append(line)
+        df = pd.DataFrame(data, columns=["filesystem", "size", "used", "available", "used_pct", "mounted_on"]).dropna()
+        df['used_pct'] = df['used_pct'].str.replace(r'[^a-zA-Z0-9\s]', '', regex=True)
+        df = df[~df["filesystem"].isin(["devtmpfs", "tmpfs"])]
+        df["instance_name"] = instance_name
