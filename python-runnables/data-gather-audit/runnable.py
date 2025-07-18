@@ -22,18 +22,22 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
-        # Test if modules are found
-        if not dss_objs:
-            raise Exception("No categories or modules found")
-        
-        # Collect the modules && Run the modules
-        local_client = dss_funcs.build_local_client()
-        results = dss_funcs.run_modules(self, dss_objs, local_client)
-        
-        # return results
-        if results:
-            df = pd.DataFrame(results, columns=["instance_level", "path", "module_name", "step", "result", "message"])
-            del df["instance_level"]
-            html = df.to_html()
-            return html
-        raise Exception("FAILED TO RUN INSTANCE CHECKS")
+
+        os.chdir("/data/dataiku/dss_data/run/audit")
+        directory_path = "./"
+        logs = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
+
+        df = pd.DataFrame()
+        for log in logs:
+            tdf = pd.read_json(log, lines=True)
+            if df.empty:
+                df = tdf
+            else:
+                df = pd.concat([df, tdf], ignore_index=True)
+
+        today = date.today()
+        yesterday = today - timedelta(days=1)
+        df = df[
+            (df["timestamp"].dt.date < today)
+            & (df["timestamp"].dt.date >= yesterday)
+        ]
