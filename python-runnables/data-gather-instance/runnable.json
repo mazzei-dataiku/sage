@@ -6,7 +6,8 @@
         "category": "sage insights"
     },
     "impersonate": false,
-    "params": [],
+    "permissions": ["ADMIN"],
+    "requiresGlobalAdmin": true,
     "permissions": [],
     "resultType": "HTML",
     "resultLabel": "my production",
