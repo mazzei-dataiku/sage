@@ -36,7 +36,8 @@ class MyRunnable(Runnable):
         
         # return results
         if results:
-            df = pd.DataFrame(results, columns=["project_key", "path", "module_name", "step", "result", "message"])
+            df = pd.DataFrame(results, columns=["instance_level", "path", "module_name", "step", "result", "message"])
+            del df["instance_level"]
             html = df.to_html()
             return html
         raise Exception("FAILED TO RUN INSTANCE CHECKS")
