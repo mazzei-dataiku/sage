@@ -52,7 +52,7 @@ class MyRunnable(Runnable):
         results.append([path, module_name, "read/parse", False, None])
         
         # loop topics and save data
-        remote_client = build_remote_client(self.sage_project_url, self.sage_project_api)
+        remote_client = dss_funcs.build_remote_client(self.sage_project_url, self.sage_project_api)
         dt_year  = str(self.dt.year)
         dt_month = str(f'{self.dt.month:02d}')
         dt_day   = str(f'{self.dt.day:02d}')
