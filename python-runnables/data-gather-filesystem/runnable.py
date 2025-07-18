@@ -26,6 +26,7 @@ class MyRunnable(Runnable):
         instance_name = dss_funcs.get_dss_name(local_client)
         
         # Get the output of the DF command
+        results = []
         cmd = "df"
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True, check=True)
         result = result.stdout.split("\n")
