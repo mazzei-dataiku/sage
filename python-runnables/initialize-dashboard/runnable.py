@@ -20,13 +20,23 @@ class MyRunnable(Runnable):
         # change directory and get audit logs
         root_path = local_client.get_instance_info().raw["dataDirPath"]
         try:
-            path = f"{root_path}/plugins/installed/sage"
-            os.chdir(path)
+            source_path = f"{root_path}/plugins/installed/sage"
+            os.path.isdir(source_path)
         except:
             try:
-                path = f"{root_path}/plugins/dev/sage"
-                os.chdir(path)
+                source_path = f"{root_path}/plugins/dev/sage"
+                os.path.isdir(source_path)
             except:
                 raise Exception("CANNOT FIND PLUGIN")
+                
+        return path
+                
+        try:
+            shutil.copytree("./streamlit", destination_directory)
+            print(f"Directory '{source_directory}' and its contents copied to '{destination_directory}' successfully.")
+        except FileExistsError:
+            print(f"Error: Destination directory '{destination_directory}' already exists. Please choose a non-existent directory.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
         
         return os.getcwd()
