@@ -111,10 +111,3 @@ class MyRunnable(Runnable):
             html = df.to_html()
             return html
         raise Exception("FAILED TO RUN INSTANCE CHECKS")
-        
-        
-        
-        
-        
-        
-        
