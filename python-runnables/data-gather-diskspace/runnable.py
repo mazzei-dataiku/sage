@@ -65,7 +65,6 @@ class MyRunnable(Runnable):
         # Get details on sizes - level_1
         df["level_1_size"] = 0
         for i,g in df.groupby(by=["level_1"]):
-            d = "/".join(i)
             logging.error(f"the value of dir name is: {d}")
             size = get_size(d)
             df.loc[df["level_1"] == i[0], "level_1_size"] = size
