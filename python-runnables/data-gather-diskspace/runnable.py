@@ -96,7 +96,7 @@ class MyRunnable(Runnable):
         dt_month = str(f'{self.dt.month:02d}')
         dt_day   = str(f'{self.dt.day:02d}')
         try:
-            write_path = f"/{instance_name}/disk_space/{topic}/{dt_year}/{dt_month}/{dt_day}/data.csv"
+            write_path = f"/{instance_name}/disk_space/diskspace/{dt_year}/{dt_month}/{dt_day}/data.csv"
             dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
             results.append([path, module_name, "write/save", False, None])
         except Exception as e:
