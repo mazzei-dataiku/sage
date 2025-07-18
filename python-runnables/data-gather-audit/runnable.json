@@ -7,7 +7,7 @@
     },
     "impersonate": false,
     "params": [],
-    "permissions": [],
+    "permissions": ["ADMIN"],
     "requiresGlobalAdmin": true,
     "resultType": "HTML",
     "resultLabel": "my production",
