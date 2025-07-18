@@ -36,11 +36,11 @@ class MyRunnable(Runnable):
             raise Exception("CANNOT FIND PROJECT or PROJECT LIBRARY")
         
         # Delete the current running version
-        if os.path.exists(directory_path) and os.path.isdir(directory_path):
+        if os.path.exists(project_path) and os.path.isdir(project_path):
             try:
-                shutil.rmtree(directory_path)
+                shutil.rmtree(project_path)
             except OSError as e:
-                raise Exception(f"Error deleting directory '{directory_path}': {e}")
+                raise Exception(f"Error deleting directory '{project_path}': {e}")
 
 
     
