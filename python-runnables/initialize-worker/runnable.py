@@ -14,6 +14,7 @@ class MyRunnable(Runnable):
         self.sage_project_url = plugin_config.get("sage_project_url", None)
         self.sage_project_api = plugin_config.get("sage_project_api", None)
         self.sage_worker_key  = plugin_config.get("sage_worker_key", None)
+        self.repo = "git@github.com:mazzei-dataiku/sage.git"
         
     def get_progress_target(self):
         return None
@@ -29,7 +30,7 @@ class MyRunnable(Runnable):
             # Install Plugin if not found
             cont = True
             try:
-                dss_init.install_plugin(self, remote_client, repo)
+                dss_init.install_plugin(self, remote_client)
                 results.append([worker_url, "plugin_install", True, None])
             except Exception as e:
                 results.append([worker_url, "plugin_install", False, e])
