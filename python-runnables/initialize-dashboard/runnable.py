@@ -18,21 +18,25 @@ class MyRunnable(Runnable):
         local_client = dss_funcs.build_local_client()
         instance_name = dss_funcs.get_dss_name(local_client)
         
-        # change directory and get audit logs
+        # Get plugin directory
         root_path = local_client.get_instance_info().raw["dataDirPath"]
-        
         source_path = None
         path_install = f"{root_path}/plugins/installed/sage/streamlit"
         path_dev = f"{root_path}/plugins/dev/sage/streamlit"
-
         if os.path.isdir(path_install):
             source_path = path_install
         elif os.path.isdir(path_dev):
             source_path = path_dev
         else:
             raise Exception("CANNOT FIND PLUGIN")
-                
-                  
+            
+        # Get Dashboard library directory
+        project_path = f"{root_path}/config/projects/{self.sage_project_key}"
+        if not os.path.isdir(project_path):
+            raise Exception("CANNOT FIND PROJECT")
+        
+        return
+    
         try:
             shutil.copytree(source_path, destination_directory)
             print(f"Directory '{source_directory}' and its contents copied to '{destination_directory}' successfully.")
