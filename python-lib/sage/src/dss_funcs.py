@@ -42,10 +42,10 @@ def run_modules(self, dss_objs, handle, project_key = None):
                 spec.loader.exec_module(module)
                 if hasattr(module, 'main'):
                     df = module.main(handle)
-                    results.append([path, module_name, "load/run", True, None])
+                    results.append([project_key, path, module_name, "load/run", True, None])
             except Exception as e:
                 df = pd.DataFrame()
-                results.append([path, module_name, "load/run", False, e])
+                results.append([project_key, path, module_name, "load/run", False, e])
             if df.empty:
                 continue # nothing to write, skip
             instance_name = get_dss_name(build_local_client())
@@ -60,9 +60,9 @@ def run_modules(self, dss_objs, handle, project_key = None):
                 if project_key:
                     write_path = f"/{instance_name}/{path}/{module_name}/{dt_year}/{dt_month}/{dt_day}/{project_key}_data.csv"
                 dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
-                results.append([path, module_name, "write/save", True, None])
+                results.append([project_key, path, module_name, "write/save", True, None])
             except Exception as e:
-                results.append([path, module_name, "write/save", False, e])
+                results.append([project_key, path, module_name, "write/save", False, e])
     return results
 
 
