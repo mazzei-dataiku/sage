@@ -39,11 +39,7 @@ def get_dss_commits(project_handle):
         r = dataset.set_schema(schema=schema)
     return
 
-        for api_config in self.plugin_config["api_configs"]:
-            hashKey = api_config[0]
-            worker_url = api_config[1]
-            worker_api = api_config[2]
-            print(api_confg)
+
             
             
 if __name__ == "__main__":
