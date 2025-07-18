@@ -21,11 +21,11 @@ class MyRunnable(Runnable):
         root_path = local_client.get_instance_info().raw["dataDirPath"]
         try:
             path = f"{root_path}/plugins/installed/sage"
-            os.chdir(root_path)
+            os.chdir(path)
         except:
             try:
                 path = f"{root_path}/plugins/installed/sage"
-                os.chdir(root_path)
+                os.chdir(path)
             except:
                 raise Exception("CANNOT FIND PLUGIN")
         
