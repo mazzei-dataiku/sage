@@ -1,6 +1,6 @@
 {
     "meta": {
-        "label": "Sage Insights - Data Gather Project level",
+        "label": "Data Gather Project level",
         "description": "Data gather the project level metadata",
         "icon": "fas fa-puzzle-piece",
         "category": "sage insights"

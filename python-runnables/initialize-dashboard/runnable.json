@@ -1,6 +1,6 @@
 {
     "meta": {
-        "label": "Sage Insights - Initialize Dashboard",
+        "label": "Initialize Dashboard",
         "description": "Create Dashboard and components into the Sage project",
         "icon": "fas fa-puzzle-piece",
         "category": "sage insights"
