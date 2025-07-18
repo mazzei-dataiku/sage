@@ -53,7 +53,7 @@ class MyRunnable(Runnable):
             raise Exception(f"An error occurred: {e}")
             
         # temp file to reload library
-        project = remote_client.get_project("SAGE_DASHBOARD")
+        project = local_client.get_project(self.sage_project_key)
         library = project.get_library()
         file = library.add_file("python/sage/initialized.csv")
         file.delete()
