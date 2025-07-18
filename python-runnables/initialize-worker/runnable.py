@@ -1,4 +1,5 @@
 from sage.src import dss_funcs
+from sage.src import dss_init
 
 import pandas as pd
 
@@ -28,7 +29,7 @@ class MyRunnable(Runnable):
             # Create the Sage Worker Project
             cont = True
             try:
-                project_handle = create_worker(remote_client, self.sage_worker_key)
+                project_handle = dss_init.create_worker(remote_client, self.sage_worker_key)
                 results.append([worker_url, "project_handle", True, None])
             except Exception as e:
                 results.append([worker_url, "project_handle", False, e])
@@ -37,7 +38,7 @@ class MyRunnable(Runnable):
             # Create the DSS Commit Table
             if cont:
                 try:
-                    get_dss_commits(project_handle)
+                    dss_init.get_dss_commits(project_handle)
                     results.append([worker_url, "dss_commit", True, None])
                 except Exception as e:
                     cont = False
@@ -46,7 +47,7 @@ class MyRunnable(Runnable):
             # Create the Phone Home Scenarios
             if cont:
                 try:
-                    create_scenarios(project_handle)
+                    dss_init.create_scenarios(project_handle)
                     results.append([worker_url, "scenarios", True, None])
                 except Exception as e:
                     cont = False
