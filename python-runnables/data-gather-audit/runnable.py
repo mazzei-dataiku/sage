@@ -22,7 +22,12 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
-
+        instance_name = dss_funcs.get_dss_name(client)
+        root_path = client.get_instance_info().raw["dataDirPath"]
+        os.chdir(root_path)
+        
+        
+        
         os.chdir("/data/dataiku/dss_data/run/audit")
         directory_path = "./"
         logs = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
