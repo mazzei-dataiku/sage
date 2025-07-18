@@ -27,11 +27,7 @@ class MyRunnable(Runnable):
         The progress_callback is a function expecting 1 value: current progress
         """
         a = []
-        for api_config in self.plugin_config["api_configs"]:
-            hashKey = api_config[0]
-            worker_url = api_config[1]
-            worker_api = api_config[2]
-            print(api_confg)
+
             
         return " | ".join(a)
         raise Exception("unimplemented")
