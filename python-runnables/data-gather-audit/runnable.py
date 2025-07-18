@@ -34,6 +34,7 @@ class MyRunnable(Runnable):
         logs = [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
 
         # Open and read each log
+        results = []
         df = pd.DataFrame()
         for log in logs:
             tdf = pd.read_json(log, lines=True)
@@ -49,6 +50,20 @@ class MyRunnable(Runnable):
             (df["timestamp"].dt.date < today)
             & (df["timestamp"].dt.date >= yesterday)
         ]
+        results.append([path, module_name, "read/parse", False, e])
         
         # loop topics and save data
-        
+        remote_client = build_remote_client(self.sage_project_url, self.sage_project_api)
+        dt_year  = str(self.dt.year)
+        dt_month = str(f'{self.dt.month:02d}')
+        dt_day   = str(f'{self.dt.day:02d}')
+        for topic in df.topic.unique():
+            write_path = f"/{instance_name}/audit/{topic}/{dt_year}/{dt_month}/{dt_day}/data.csv"
+            dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
+            
+        # return results
+        if results:
+            df = pd.DataFrame(results, columns=["path", "module_name", "step", "result", "message"])
+            html = df.to_html()
+            return html
+        raise Exception("FAILED TO RUN INSTANCE CHECKS")
