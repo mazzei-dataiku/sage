@@ -22,6 +22,9 @@ class MyRunnable(Runnable):
 
             # Create the DSS Commits Table
             get_dss_commits(project_handle)
+            
+            # Create the Phone Home Scenarios
+            create_scenarios(project_handle)
         
             
         return "123"       
