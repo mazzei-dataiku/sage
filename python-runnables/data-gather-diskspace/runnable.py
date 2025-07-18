@@ -40,6 +40,7 @@ class MyRunnable(Runnable):
         os.chdir(root_path)
         
         # Find directories maxdepth
+        results = []
         cmd = "find . -maxdepth 3 -type d"
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True, check=True)
         directories = result.stdout.split("\n")
@@ -89,6 +90,8 @@ class MyRunnable(Runnable):
                 (df["level_1"] == i[0])
                 & (df["level_2"] == i[1])
                 & (df["level_3"] == i[2]), "level_3_size"] = size
+            
+        results.append([path, module_name, "read/parse", False, None])
         
         # loop topics and save data
         remote_client = build_remote_client(self.sage_project_url, self.sage_project_api)
