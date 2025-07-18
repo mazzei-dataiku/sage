@@ -31,10 +31,9 @@ class MyRunnable(Runnable):
         else:
             raise Exception("CANNOT FIND PLUGIN")
                 
-        return source_path
-                
+                  
         try:
-            shutil.copytree("./streamlit", destination_directory)
+            shutil.copytree(source_path, destination_directory)
             print(f"Directory '{source_directory}' and its contents copied to '{destination_directory}' successfully.")
         except FileExistsError:
             print(f"Error: Destination directory '{destination_directory}' already exists. Please choose a non-existent directory.")
