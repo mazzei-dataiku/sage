@@ -1,8 +1,9 @@
 {
     "meta": {
-        "label": "Sage Insights - Data Gather Audit Logs",
+        "label": "Data Gather Audit Logs",
         "description": "Data gather the Audit Logs",
-        "icon": "fas fa-puzzle-piece"
+        "icon": "fas fa-puzzle-piece",
+        "category": "sage insights"
     },
     "impersonate": false,
     "params": [],
