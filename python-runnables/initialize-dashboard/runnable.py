@@ -29,7 +29,7 @@ class MyRunnable(Runnable):
             except:
                 raise Exception("CANNOT FIND PLUGIN")
                 
-        return path
+        return source_path
                 
         try:
             shutil.copytree("./streamlit", destination_directory)
