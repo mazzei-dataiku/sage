@@ -24,7 +24,7 @@ macro = "pyrunnable_sage_data-gather-filesystem"
 """
 
 
-def install_plugin(self, remote_client, repo):
+def install_plugin(self, remote_client):
     # Only install if not found
     sage_found = False
     for plugin in remote_client.list_plugins():
@@ -34,7 +34,7 @@ def install_plugin(self, remote_client, repo):
         return
     
     # install the plugin
-    plugin_install = remote_client.install_plugin_from_git(repository_url=repo, checkout='master', subpath=None)
+    plugin_install = remote_client.install_plugin_from_git(repository_url=self.repo, checkout='master', subpath=None)
     r = plugin_install.wait_for_result()
     r = plugin_handle.get_result()
     if r["messages"]["warning"] or r["messages"]["error"] or r["messages"]["fatal"]:
