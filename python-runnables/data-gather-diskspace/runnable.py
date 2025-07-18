@@ -98,6 +98,7 @@ class MyRunnable(Runnable):
         dt_year  = str(self.dt.year)
         dt_month = str(f'{self.dt.month:02d}')
         dt_day   = str(f'{self.dt.day:02d}')
+        df["instance_name"] = instance_name
         try:
             write_path = f"/{instance_name}/disk_space/diskspace/{dt_year}/{dt_month}/{dt_day}/data.csv"
             dss_folder.write_remote_folder_output(self, remote_client, write_path, df)
