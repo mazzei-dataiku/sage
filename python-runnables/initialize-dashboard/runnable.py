@@ -31,9 +31,9 @@ class MyRunnable(Runnable):
             raise Exception("CANNOT FIND PLUGIN")
             
         # Get Dashboard library directory
-        project_path = f"{root_path}/config/projects/{self.sage_project_key}"
+        project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python"
         if not os.path.isdir(project_path):
-            raise Exception("CANNOT FIND PROJECT")
+            raise Exception("CANNOT FIND PROJECT or PROJECT LIBVRARY")
         
         return
     
