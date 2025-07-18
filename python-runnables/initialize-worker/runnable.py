@@ -17,7 +17,7 @@ class MyRunnable(Runnable):
             worker_api = api_config["worker_api"]
             remote_client = 123
             
-            # 
+            # Create the Sage Worker Project
             project_handle = create_worker(remote_client)
 
             # Create the DSS Commits Table
