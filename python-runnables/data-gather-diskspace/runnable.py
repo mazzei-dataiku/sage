@@ -91,7 +91,7 @@ class MyRunnable(Runnable):
                 & (df["level_2"] == i[1])
                 & (df["level_3"] == i[2]), "level_3_size"] = size
             
-        results.append(["read/parse", False, None])
+        results.append(["read/parse", True, None])
         
         # loop topics and save data
         remote_client = dss_funcs.build_remote_client(self.sage_project_url, self.sage_project_api)
