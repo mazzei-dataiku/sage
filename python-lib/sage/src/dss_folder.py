@@ -11,3 +11,5 @@ def write_remote_folder_output(self, client, path, df):
     folder = projet_handle.get_managed_folder(odb_id=fid)
     r = folder.put_file(path, df.to_csv(index=None))
     return
+
+# ---------- DATAIKU LOCAL FOLDERS -----------------------------
