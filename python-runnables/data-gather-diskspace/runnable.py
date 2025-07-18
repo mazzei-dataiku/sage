@@ -7,6 +7,15 @@ from datetime import date, timedelta
 
 from dataiku.runnables import Runnable
 
+def get_size(d):
+    try:
+        result = subprocess.run(f"du -sc {d}", shell=True, capture_output=True, text=True, check=True)
+        size = result.stdout.split("\t")[0]
+        size = int(size)
+    except:
+        size = 0
+    return size
+
 
 class MyRunnable(Runnable):
     def __init__(self, project_key, config, plugin_config):
