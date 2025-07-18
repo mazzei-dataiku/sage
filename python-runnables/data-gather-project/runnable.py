@@ -32,7 +32,6 @@ class MyRunnable(Runnable):
         
         # Collect the modules && Run the modules
         local_client = dss_funcs.build_local_client()
-        return str(len(local_client.list_project_keys()))
         for key in local_client.list_project_keys():
             project_handle = local_client.get_project(project_key=key)
         results = dss_funcs.run_modules(self, dss_objs, project_handle)
