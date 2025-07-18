@@ -22,7 +22,7 @@ class MyRunnable(Runnable):
             remote_client = 123
             
             # Create the Sage Worker Project
-            project_handle = create_worker(remote_client)
+            project_handle = create_worker(remote_client, self.sage_worker_key)
 
             # Create the DSS Commits Table
             get_dss_commits(project_handle)
