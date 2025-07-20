@@ -15,6 +15,8 @@ class MyRunnable(Runnable):
         return None
 
     def run(self, progress_callback):
+        results = []
+        
         # Get local client and name
         local_client = dss_funcs.build_local_client()
         instance_name = dss_funcs.get_dss_name(local_client)
