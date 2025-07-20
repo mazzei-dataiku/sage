@@ -61,20 +61,20 @@ class MyRunnable(Runnable):
         if cont:
             try:
                 shutil.copytree(source_path, project_path)
+                # temp file to reload library
+                project_handle = local_client.get_project(self.sage_project_key)
+                library = project_handle.get_library()
+                file = library.add_file("python/sage/initialized.csv")
+                file.delete()
             except Exception as e:
                 results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
                 cont = False
             results.append(["Copy Streamlit", True, None])
             
-        # temp file to reload library
-        project_handle = local_client.get_project(self.sage_project_key)
-        library = project_handle.get_library()
-        file = library.add_file("python/sage/initialized.csv")
-        file.delete()
-        
         # Create the folders
-        dss_folder.get_folder(self, project_handle, "partitioned_data")
-        dss_folder.get_folder(self, project_handle, "base_data")
+        if cont:
+            dss_folder.get_folder(self, project_handle, "partitioned_data")
+            dss_folder.get_folder(self, project_handle, "base_data")
         
         # Create the Code Studio Template
         found = False
