@@ -86,7 +86,7 @@ class MyRunnable(Runnable):
         if cont:
             try:
                 found = False
-                for cs in project.list_code_studios():
+                for cs in project_handle.list_code_studios():
                     if cs.name == "Sage Dashboard":
                         found = True
                         break
