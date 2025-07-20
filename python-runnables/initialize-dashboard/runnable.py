@@ -23,6 +23,7 @@ class MyRunnable(Runnable):
         instance_name = dss_funcs.get_dss_name(local_client)
         
         # Get plugin directory
+        if cont:
         root_path = local_client.get_instance_info().raw["dataDirPath"]
         source_path = None
         path_install = f"{root_path}/plugins/installed/sage/streamlit"
@@ -32,7 +33,8 @@ class MyRunnable(Runnable):
         elif os.path.isdir(path_dev):
             source_path = path_dev
         else:
-            raise Exception("CANNOT FIND PLUGIN")
+            results.append(["plugin_directory", False, "Cannot Find plugin Directory"])
+        results.append(["plugin_directory", True, "Found plugin Directory"])
             
             
         # Get Dashboard library directory
