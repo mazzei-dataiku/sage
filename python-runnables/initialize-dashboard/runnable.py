@@ -62,5 +62,8 @@ class MyRunnable(Runnable):
         dss_folder.get_folder(self, project_handle, "partitioned_data")
         dss_folder.get_folder(self, project_handle, "base_data")
         
+        # Create the Code Studio Template
+        code_studio = project_handle.create_code_studio(name="Sage Dashboard", template_id="sage")
+        
         
         return
