@@ -35,7 +35,7 @@ class MyRunnable(Runnable):
             else:
                 results.append(["plugin directory", False, "Cannot find plugin Directory"])
                 cont = False
-            results.append(["plugin directory", True, "Found plugin Directory"])
+            results.append(["plugin directory", True, None])
             
             
         # Get Dashboard library directory
@@ -44,7 +44,7 @@ class MyRunnable(Runnable):
             if not os.path.isdir(project_path):
                 results.append(["project library", False, "Cannot find project library"])
                 cont = False
-            results.append(["project library", True, "Found project library"])
+            results.append(["project library", True, None])
         
         # Delete the current running version
         if cont:
@@ -53,7 +53,9 @@ class MyRunnable(Runnable):
                 try:
                     shutil.rmtree(project_path)
                 except OSError as e:
-                    raise Exception(f"Error deleting directory '{project_path}': {e}")
+                    results.append(["Delete current web application", False, f"Error deleting directory '{project_path}': {e}"])
+                    cont = False
+                results.append(["Delete current web application", True, None])
 
         # Copy the streamlit application
         try:
