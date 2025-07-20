@@ -66,4 +66,9 @@ class MyRunnable(Runnable):
         code_studio = project_handle.create_code_studio(name="Sage Dashboard", template_id="sage")
         
         
-        return
+         # return results
+        if results:
+            df = pd.DataFrame(results, columns=["project_key", "path", "module_name", "step", "result", "message"])
+            html = df.to_html()
+            return html
+        raise Exception("FAILED TO RUN PROJECT CHECKS")
