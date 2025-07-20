@@ -1,6 +1,7 @@
 from sage.src import dss_funcs, dss_folder
 import os
 import shutil
+import pandas as pd
 
 from dataiku.runnables import Runnable
 
