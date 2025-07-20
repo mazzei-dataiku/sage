@@ -39,10 +39,11 @@ class MyRunnable(Runnable):
             
             
         # Get Dashboard library directory
-        project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python"
-        if not os.path.isdir(project_path):
-            results.append(["project library", False, "Cannot find project library"])
-        results.append(["project library", True, "Found project library"])
+        if cont:
+            project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python"
+            if not os.path.isdir(project_path):
+                results.append(["project library", False, "Cannot find project library"])
+            results.append(["project library", True, "Found project library"])
         
         # Delete the current running version
         project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python/sage"
