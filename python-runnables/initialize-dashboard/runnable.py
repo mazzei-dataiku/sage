@@ -24,17 +24,18 @@ class MyRunnable(Runnable):
         
         # Get plugin directory
         if cont:
-        root_path = local_client.get_instance_info().raw["dataDirPath"]
-        source_path = None
-        path_install = f"{root_path}/plugins/installed/sage/streamlit"
-        path_dev = f"{root_path}/plugins/dev/sage/streamlit"
-        if os.path.isdir(path_install):
-            source_path = path_install
-        elif os.path.isdir(path_dev):
-            source_path = path_dev
-        else:
-            results.append(["plugin directory", False, "Cannot find plugin Directory"])
-        results.append(["plugin directory", True, "Found plugin Directory"])
+            root_path = local_client.get_instance_info().raw["dataDirPath"]
+            source_path = None
+            path_install = f"{root_path}/plugins/installed/sage/streamlit"
+            path_dev = f"{root_path}/plugins/dev/sage/streamlit"
+            if os.path.isdir(path_install):
+                source_path = path_install
+            elif os.path.isdir(path_dev):
+                source_path = path_dev
+            else:
+                results.append(["plugin directory", False, "Cannot find plugin Directory"])
+                cont = False
+            results.append(["plugin directory", True, "Found plugin Directory"])
             
             
         # Get Dashboard library directory
