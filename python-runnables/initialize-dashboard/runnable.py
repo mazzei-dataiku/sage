@@ -58,12 +58,13 @@ class MyRunnable(Runnable):
                 results.append(["Delete current web application", True, None])
 
         # Copy the streamlit application
-        try:
-            shutil.copytree(source_path, project_path)
-        except FileExistsError:
-            raise Exception(f"Error: Destination directory '{destination_directory}' already exists. Please choose a non-existent directory.")
-        except Exception as e:
-            raise Exception(f"An error occurred: {e}")
+        if cont:
+            try:
+                shutil.copytree(source_path, project_path)
+            except Exception as e:
+                results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
+                cont = False
+            results.append(["Copy Streamlit", True, None])
             
         # temp file to reload library
         project_handle = local_client.get_project(self.sage_project_key)
