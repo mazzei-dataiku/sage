@@ -73,18 +73,28 @@ class MyRunnable(Runnable):
             
         # Create the folders
         if cont:
-            dss_folder.get_folder(self, project_handle, "partitioned_data")
-            dss_folder.get_folder(self, project_handle, "base_data")
+            try:
+                dss_folder.get_folder(self, project_handle, "partitioned_data")
+                dss_folder.get_folder(self, project_handle, "base_data")
+            except Exception as e:
+                results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
+                cont = False
+            results.append(["Confirmed Folders", True, None])
         
         # Create the Code Studio Template
-        found = False
-        for cs in project.list_code_studios():
-            if cs.name == "Sage Dashboard":
-                found = True
-                break
-        if not found:
-            code_studio = project_handle.create_code_studio(name="Sage Dashboard", template_id="sage")
-        
+        if cont:
+            try:
+                found = False
+                for cs in project.list_code_studios():
+                    if cs.name == "Sage Dashboard":
+                        found = True
+                        break
+                if not found:
+                    code_studio = project_handle.create_code_studio(name="Sage Dashboard", template_id="sage")
+            except Exception as e:
+                results.append(["Create Code Studio", False, f"An error occurred: {e}"])
+                cont = False
+            results.append(["Create Code Studio", True, None])
         
         # return results
         if results:
