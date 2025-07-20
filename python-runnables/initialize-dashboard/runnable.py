@@ -47,12 +47,13 @@ class MyRunnable(Runnable):
             results.append(["project library", True, "Found project library"])
         
         # Delete the current running version
-        project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python/sage"
-        if os.path.exists(project_path) and os.path.isdir(project_path):
-            try:
-                shutil.rmtree(project_path)
-            except OSError as e:
-                raise Exception(f"Error deleting directory '{project_path}': {e}")
+        if cont:
+            project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python/sage"
+            if os.path.exists(project_path) and os.path.isdir(project_path):
+                try:
+                    shutil.rmtree(project_path)
+                except OSError as e:
+                    raise Exception(f"Error deleting directory '{project_path}': {e}")
 
         # Copy the streamlit application
         try:
