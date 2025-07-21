@@ -2,10 +2,10 @@ import dataiku
 
 
 # ---------- DATAIKU LOCAL FOLDERS -----------------------------
-def get_folder(self, project_handle, folder_name):
+def get_folder(sage_project_key, project_handle, folder_name):
     folder = dataiku.Folder(
         lookup = folder_name,
-        project_key = self.sage_project_key,
+        project_key = sage_project_key,
         ignore_flow = True
         )
     try:
