@@ -38,29 +38,29 @@ class MyRunnable(Runnable):
         filtered_df = folder_df[folder_df['dt'] == max_date]
         
         # Loop over the sets and gather
-groups = filtered_df.groupby(by=["category", "module"])
-for i, g in groups:
-    category, module = i
-    # loop over and build consolidated df
-    df = pd.DataFrame()
-    for partition in g["partitions"].tolist():
-        paths = folder.list_paths_in_partition(partition=partition)
-        for path in paths:
-            tdf = read_local_folder_input( # dss_folder
-                "SAGE_DASHBOARD", project_handle, "partitioned_data", path
-            )
-            if df.empty:
-                df = tdf
-            else:
-                df = pd.concat([df, tdf], ignore_index=True)
-        # Write consolidated DF to folder
-        write_local_folder_output( # dss_folder
-            sage_project_key = "SAGE_DASHBOARD",
-            project_handle = project_handle,
-            folder_name = "base_data",
-            path = f"/{category}/{module}.csv",
-            data_type = "DF",
-            data = df
-        )
+        groups = filtered_df.groupby(by=["category", "module"])
+        for i, g in groups:
+            category, module = i
+            # loop over and build consolidated df
+            df = pd.DataFrame()
+            for partition in g["partitions"].tolist():
+                paths = folder.list_paths_in_partition(partition=partition)
+                for path in paths:
+                    tdf = read_local_folder_input( # dss_folder
+                        "SAGE_DASHBOARD", project_handle, "partitioned_data", path
+                    )
+                    if df.empty:
+                        df = tdf
+                    else:
+                        df = pd.concat([df, tdf], ignore_index=True)
+                # Write consolidated DF to folder
+                write_local_folder_output( # dss_folder
+                    sage_project_key = "SAGE_DASHBOARD",
+                    project_handle = project_handle,
+                    folder_name = "base_data",
+                    path = f"/{category}/{module}.csv",
+                    data_type = "DF",
+                    data = df
+                )
         
         return
