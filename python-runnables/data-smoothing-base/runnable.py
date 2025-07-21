@@ -20,8 +20,8 @@ class MyRunnable(Runnable):
     def run(self, progress_callback):
         # get partitioned folder
         local_client = dss_funcs.build_local_client()
-        project_handle = local_client.get_project(project_key=self.sage_project_key) # 
-        folder = dss_folder.get_folder(self.sage_project_key, project_handle, "partitioned_data") # , self.sage_project_key
+        project_handle = local_client.get_project(project_key=self.sage_project_key)
+        folder = dss_folder.get_folder(self.sage_project_key, project_handle, "partitioned_data")
         
         # list partitions and turn into a df
         partitions = folder.list_partitions()
@@ -31,7 +31,7 @@ class MyRunnable(Runnable):
         
         # get latest partition
         max_date = folder_df['dt'].max()
-        write_local_folder_output( # dss_folder
+        dss_folder.write_local_folder_output(
             sage_project_key = self.sage_project_key,
             project_handle = project_handle,
             folder_name = "base_data",
