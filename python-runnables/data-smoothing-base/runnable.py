@@ -20,8 +20,8 @@ class MyRunnable(Runnable):
     def run(self, progress_callback):
         # get partitioned folder
         local_client = dss_funcs.build_local_client()
-        project_handle = local_client.get_project(project_key="SAGE_DASHBOARD") # self.sage_project_key
-        folder = get_folder("SAGE_DASHBOARD", project_handle, "partitioned_data") # dss_folder, self.sage_project_key
+        project_handle = local_client.get_project(project_key=self.sage_project_key) # 
+        folder = get_folder(self.sage_project_key, project_handle, "partitioned_data") # dss_folder, self.sage_project_key
         
         # list partitions and turn into a df
         partitions = folder.list_partitions()
@@ -32,7 +32,7 @@ class MyRunnable(Runnable):
         # get latest partition
         max_date = folder_df['dt'].max()
         write_local_folder_output( # dss_folder
-            sage_project_key = "SAGE_DASHBOARD",
+            sage_project_key = self.sage_project_key,
             project_handle = project_handle,
             folder_name = "base_data",
             path = f"/partition.csv",
@@ -51,7 +51,10 @@ class MyRunnable(Runnable):
                 paths = folder.list_paths_in_partition(partition=partition)
                 for path in paths:
                     tdf = read_local_folder_input( # dss_folder
-                        "SAGE_DASHBOARD", project_handle, "partitioned_data", path
+                        sage_project_key = self.sage_project_key,
+                        project_handle = project_handle,
+                        folder_name = "partitioned_data",
+                        path = path
                     )
                     if df.empty:
                         df = tdf
@@ -59,7 +62,7 @@ class MyRunnable(Runnable):
                         df = pd.concat([df, tdf], ignore_index=True)
                 # Write consolidated DF to folder
                 write_local_folder_output( # dss_folder
-                    sage_project_key = "SAGE_DASHBOARD",
+                    sage_project_key = self.sage_project_key,
                     project_handle = project_handle,
                     folder_name = "base_data",
                     path = f"/{category}/{module}.csv",
