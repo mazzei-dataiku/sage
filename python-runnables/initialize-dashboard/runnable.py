@@ -62,7 +62,7 @@ class MyRunnable(Runnable):
         if cont:
             try:
                 shutil.copytree(f"{source_path}/streamlit", project_path)
-                shutil.copytree(f"{source_path}/python-lib/sage/src", project_path)
+                shutil.copytree(f"{source_path}/python-lib/sage/src", f"{project_path}/src")
                 # temp file to reload library
                 project_handle = local_client.get_project(self.sage_project_key)
                 library = project_handle.get_library()
