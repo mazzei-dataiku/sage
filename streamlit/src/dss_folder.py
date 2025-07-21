@@ -4,17 +4,17 @@ import json
 import warnings
 
 
-
-
-
-def write_folder_output(folder_name, path, data, data_type="DF"):
-    folder = get_folder(folder_name)
-    if data_type == "DF":
-        with folder.get_writer(path) as w:
-            w.write(data.to_csv(index=False).encode("utf-8"))
-    elif data_type == "JSON":
-        with folder.get_writer(path) as w:
-            w.write(str.encode(json.dumps(data, indent=4)))
+def get_folder(folder_name):
+    folder = dataiku.Folder(
+        lookup = folder_name,
+        project_key = dataiku.default_project_key(),
+        ignore_flow = True
+        )
+    try:
+        folder.get_id()
+    except:
+        folder = create_folder(folder_name)
+    return folder
 
 
 def read_folder_input(folder_name, path, data_type="DF"):
@@ -38,7 +38,3 @@ def function_with_warning(df):
             if temp_col.notna().all():
                 df[c] = temp_col
     return df
-
-
-if __name__ == "__main__":
-    main()
