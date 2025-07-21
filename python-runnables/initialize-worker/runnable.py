@@ -14,7 +14,7 @@ class MyRunnable(Runnable):
         self.sage_project_url = plugin_config.get("sage_project_url", None)
         self.sage_project_api = plugin_config.get("sage_project_api", None)
         self.sage_worker_key  = plugin_config.get("sage_worker_key", None)
-        self.repo = "git@github.com:mazzei-dataiku/sage.git"
+        self.repo = "https://github.com/mazzei-dataiku/sage.git"
         
     def get_progress_target(self):
         return None
