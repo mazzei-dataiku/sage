@@ -19,7 +19,7 @@ class MyRunnable(Runnable):
 
     def run(self, progress_callback):
         # get partitioned folder
-        local_client = build_local_client() # dss_funcs
+        local_client = dss_funcs.build_local_client()
         project_handle = local_client.get_project(project_key="SAGE_DASHBOARD") # self.sage_project_key
         folder = get_folder("SAGE_DASHBOARD", project_handle, "partitioned_data") # dss_folder, self.sage_project_key
         
