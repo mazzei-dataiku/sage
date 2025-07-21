@@ -68,6 +68,8 @@ class MyRunnable(Runnable):
                 library = project_handle.get_library()
                 file = library.add_file("python/sage/initialized.csv")
                 file.delete()
+                file = library.get_file("python/sage/src/dss_init.py")
+                file.delete()
             except Exception as e:
                 results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
                 cont = False
