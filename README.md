@@ -28,4 +28,9 @@ Due to the web application being built on Streamlit, installation requires a bit
         1. SAGE_DASHBOARD | HOST | API_KEY | SAGE_WORKER
         1. Fill out each host including the local host if you want to track the local host
 1. Code Studios
-    1. 
+    1. Create the template name `sage_dashboard`
+    1. Setup K8s to run on
+    1. Add the `Sage Dashboard - Streamlit` block
+    1. Disable permissions for users
+    1. Build
+1. 
