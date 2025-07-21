@@ -27,8 +27,8 @@ class MyRunnable(Runnable):
         if cont:
             root_path = local_client.get_instance_info().raw["dataDirPath"]
             source_path = None
-            path_install = f"{root_path}/plugins/installed/sage/streamlit"
-            path_dev = f"{root_path}/plugins/dev/sage/streamlit"
+            path_install = f"{root_path}/plugins/installed/sage"
+            path_dev = f"{root_path}/plugins/dev/sage"
             if os.path.isdir(path_install):
                 source_path = path_install
             elif os.path.isdir(path_dev):
@@ -61,6 +61,7 @@ class MyRunnable(Runnable):
         # Copy the streamlit application
         if cont:
             try:
+                shutil.copytree(source_path, project_path)
                 shutil.copytree(source_path, project_path)
                 # temp file to reload library
                 project_handle = local_client.get_project(self.sage_project_key)
