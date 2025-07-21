@@ -50,7 +50,7 @@ class MyRunnable(Runnable):
             for partition in g["partitions"].tolist():
                 paths = folder.list_paths_in_partition(partition=partition)
                 for path in paths:
-                    tdf = read_local_folder_input( # dss_folder
+                    tdf = dss_folder.read_local_folder_input(
                         sage_project_key = self.sage_project_key,
                         project_handle = project_handle,
                         folder_name = "partitioned_data",
@@ -61,7 +61,7 @@ class MyRunnable(Runnable):
                     else:
                         df = pd.concat([df, tdf], ignore_index=True)
                 # Write consolidated DF to folder
-                write_local_folder_output( # dss_folder
+                dss_folder.write_local_folder_output(
                     sage_project_key = self.sage_project_key,
                     project_handle = project_handle,
                     folder_name = "base_data",
