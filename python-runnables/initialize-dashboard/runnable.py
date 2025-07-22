@@ -116,7 +116,7 @@ class MyRunnable(Runnable):
         # Create scenario to gather base data 
         if cont:
             try:
-                dss_init.create_scenarios(project_handle, "WORKER")
+                dss_init.create_scenarios(project_handle, "DASHBOARD")
                 results.append([worker_url, "scenarios", True, None])
             except Exception as e:
                 cont = False
