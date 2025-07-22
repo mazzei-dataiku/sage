@@ -78,7 +78,6 @@ class MyRunnable(Runnable):
                 library = project_handle.get_library()
                 file = library.add_file("python/sage/init.txt")
                 file.delete()
-                
                 file = library.get_file("python/sage/src/dss_init.py")
                 file.delete()
                 results.append(["Library Refresh", True, None])
