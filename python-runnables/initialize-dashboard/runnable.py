@@ -69,6 +69,7 @@ class MyRunnable(Runnable):
         if cont:
             try:
                 r = shutil.copytree(f"{source_path}/streamlit", project_path)
+                os.mkdir(f"{project_path}/src/")
                 r = shutil.copy(f"{source_path}/python-lib/sage/src/dss_funcs.py", f"{project_path}/src/")
                 r = shutil.copy(f"{source_path}/python-lib/sage/src/dss_folder.py", f"{project_path}/src/")
                 results.append(["Copy Streamlit", True, None])
