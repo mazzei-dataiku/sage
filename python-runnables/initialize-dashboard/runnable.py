@@ -69,7 +69,7 @@ class MyRunnable(Runnable):
         
         
         
-        cont = False
+        #cont = False
 
         # Copy the streamlit application
         if cont:
