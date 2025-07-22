@@ -41,7 +41,7 @@ def install_plugin(self, remote_client):
             sage_found = True
     if sage_found:
         plugin = remote_client.get_plugin(plugin_id="sage")
-        plugin.update_from_git(repository_url=repository_url=self.repo)
+        #plugin.update_from_git(repository_url=repository_url=self.repo)
         return
     
     # install the plugin
