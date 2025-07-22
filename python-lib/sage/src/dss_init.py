@@ -41,8 +41,10 @@ def install_plugin(self, remote_client):
             sage_found = True
     if sage_found:
         if self.update_github:
+            import logging
             plugin = remote_client.get_plugin(plugin_id="sage")
             plugin.update_from_git(repository_url=self.repo, checkout="dev-mazeei-v1.3")
+            logging.error("UPDATED GIT REPO")
         return
     
     # install the plugin
