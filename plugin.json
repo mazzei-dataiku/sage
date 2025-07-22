@@ -12,6 +12,12 @@
     },
     "params": [
         {
+            "type": "BOOLEAN",
+            "name": "ignore_certs",
+            "label": "Ignore Certificates and force trust TLS",
+            "defaultValue": false
+        },
+        {
             "name": "sep1",
             "label": "Sage Dashboard Information",
             "type": "SEPARATOR"
