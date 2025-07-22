@@ -70,10 +70,15 @@ class MyRunnable(Runnable):
             
         # Clean up Library
         if cont:
-            project_handle = local_client.get_project(self.sage_project_key)
-            library = project_handle.get_library()
-            file = library.add_file("python/sage/initialized.csv")
-            file.delete()
+            try:
+                project_handle = local_client.get_project(self.sage_project_key)
+                library = project_handle.get_library()
+                file = library.add_file("python/sage/initialized.csv")
+                file.delete()
+                results.append(["Library Refresh", True, None])
+            except Exception as e:
+                results.append(["Library Refresh", False, f"An error occurred: {e}"])
+                cont = False
             
         # Create the folders
         if cont:
