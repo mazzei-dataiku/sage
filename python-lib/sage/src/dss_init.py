@@ -23,6 +23,16 @@ macro = "pyrunnable_sage_data-gather-diskspace"
 macro = "pyrunnable_sage_data-gather-filesystem"
 """
 
+dashboard_scenarios = """
+[default]
+trigger = '{"type": "temporal", "name": "Time-based", "delay": 5, "active": true, "params": {"repeatFrequency": 1, "frequency": "Daily", "startingFrom": "2025-07-16", "daysOfWeek": ["Wednesday"], "monthlyRunOn": "ON_THE_DAY", "minute": 0, "hour": 17, "timezone": "Canada/Eastern"}}'
+step = '{"type": "runnable", "name": "run_macro", "enabled": true, "alwaysShowComment": false, "runConditionType": "RUN_IF_STATUS_MATCH", "runConditionStatuses": ["SUCCESS", "WARNING"], "runConditionExpression": "", "resetScenarioStatus": false, "delayBetweenRetries": 10, "maxRetriesOnFail": 0, "params": {"runnableType": "REPLACE_MACRO_HERE",   "config": {}, "adminConfig": {}, "proceedOnFailure": false}}'
+
+[refresh_base_data]
+macro = "pyrunnable_sage_data-gather-instance"
+
+"""
+
 
 def install_plugin(self, remote_client):
     # Only install if not found
@@ -108,7 +118,7 @@ def create_scenarios(project_handle, location):
     if location ==  "WORKER":
         macros = tomllib.loads(worker_scenarios)
     else:
-        macros = tomllib.loads(worker_scenarios)
+        macros = tomllib.loads(dashboard_scenarios)
     for key in macros:
         # skip default
         if key == "default":
