@@ -33,6 +33,8 @@ macro = "pyrunnable_sage_data-smoothing-base"
 """
 
 
+import logging
+
 def install_plugin(self, remote_client):
     # Only install if not found
     sage_found = False
@@ -40,11 +42,11 @@ def install_plugin(self, remote_client):
         if plugin["id"] == "sage":
             sage_found = True
     if sage_found:
+        logging.error("git repo found")
         if self.update_github:
-            import logging
             plugin = remote_client.get_plugin(plugin_id="sage")
             plugin.update_from_git(repository_url=self.repo, checkout="dev-mazeei-v1.3")
-            logging.error("UPDATED GIT REPO")
+            logging.error("git repo updated")
         return
     
     # install the plugin
