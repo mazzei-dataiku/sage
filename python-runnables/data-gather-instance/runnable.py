@@ -29,7 +29,7 @@ class MyRunnable(Runnable):
 
     def run(self, progress_callback):
         # Set environment variable
-        os.environ["SAGE_WORKER"]
+        os.environ["SAGE_WORKER"] = self.sage_worker_key
         # Test if modules are found
         if not dss_objs:
             raise Exception("No categories or modules found")
