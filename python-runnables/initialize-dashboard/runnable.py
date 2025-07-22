@@ -58,6 +58,7 @@ class MyRunnable(Runnable):
             if os.path.exists(project_path) and os.path.isdir(project_path):
                 try:
                     shutil.rmtree(project_path)
+                    file = library.add_file("python/init.txt")
                     results.append(["Delete Existing", True, None])
                 except OSError as e:
                     results.append(["Delete Existing", False, f"Error deleting directory '{project_path}': {e}"])
@@ -78,7 +79,7 @@ class MyRunnable(Runnable):
         if cont:
             try:
                 
-                file = library.add_file("python/sage/init.txt")
+                
                 file.delete()
                 #file = library.get_file("python/sage/src/dss_init.py")
                 #file.delete()
