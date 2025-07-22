@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-SAGE_WORKER = os.os.environ["SAGE_WORKER"]
+SAGE_WORKER = os.environ["SAGE_WORKER"]
 
 def get_column_names_from_schema(schema):
     colNames = []
