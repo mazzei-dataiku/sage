@@ -41,19 +41,19 @@ class MyRunnable(Runnable):
             if cont:
                 try:
                     project_handle = dss_init.create_worker(remote_client, self.sage_worker_key)
-                    results.append([worker_url, "project_handle", True, None])
+                    results.append([worker_url, "Sage Worker Created", True, None])
                 except Exception as e:
-                    results.append([worker_url, "project_handle", False, e])
+                    results.append([worker_url, "Sage Worker Created", False, e])
                     cont = False
 
             # Create the DSS Commit Table
             if cont:
                 try:
                     dss_init.get_dss_commits(project_handle)
-                    results.append([worker_url, "dss_commit", True, None])
+                    results.append([worker_url, "Load DSS Commits Table", True, None])
                 except Exception as e:
                     cont = False
-                    results.append([worker_url, "dss_commit", False, e])
+                    results.append([worker_url, "Load DSS Commits Table", False, e])
             
             # Create the Phone Home Scenarios
             if cont:
