@@ -63,6 +63,8 @@ class MyRunnable(Runnable):
                 except OSError as e:
                     results.append(["Delete Existing", False, f"Error deleting directory '{project_path}': {e}"])
                     cont = False
+            else:
+                results.append(["Delete Existing", True, "Initial Setup"])
         
         
         
