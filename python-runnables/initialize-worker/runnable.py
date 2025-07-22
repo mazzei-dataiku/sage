@@ -58,7 +58,7 @@ class MyRunnable(Runnable):
             # Create the Phone Home Scenarios
             if cont:
                 try:
-                    dss_init.create_scenarios(project_handle)
+                    dss_init.create_scenarios(project_handle, "WORKER")
                     results.append([worker_url, "scenarios", True, None])
                 except Exception as e:
                     cont = False
