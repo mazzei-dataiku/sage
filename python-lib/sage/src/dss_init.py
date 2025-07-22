@@ -43,6 +43,7 @@ def install_plugin(self, remote_client):
             sage_found = True
     if sage_found:
         logging.error("git repo found")
+        logging.error(f"ahhhh {self.update_github}")
         if self.update_github:
             logging.error("git repo to be updated")
             plugin = remote_client.get_plugin(plugin_id="sage")
