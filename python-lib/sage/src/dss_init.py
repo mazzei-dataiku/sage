@@ -30,7 +30,6 @@ step = '{"type": "runnable", "name": "run_macro", "enabled": true, "alwaysShowCo
 
 [refresh_base_data]
 macro = "pyrunnable_sage_data-smoothing-base"
-
 """
 
 
