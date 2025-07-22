@@ -92,6 +92,10 @@ class MyRunnable(Runnable):
         
         # Create the Code Studio Template -- future release create the CS in admin as well so I control the whole naming
         if cont:
+            # todo: create CS in admin settings for users removing a setup step
+            print()
+            
+        if cont:
             try:
                 found = False
                 for cs in project_handle.list_code_studios():
