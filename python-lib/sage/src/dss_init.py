@@ -104,8 +104,11 @@ def get_dss_commits(project_handle):
     return
 
 
-def create_scenarios(project_handle):
-    macros = tomllib.loads(worker_scenarios)
+def create_scenarios(project_handle, location):
+    if location ==  "WORKER":
+        macros = tomllib.loads(worker_scenarios)
+    else:
+        macros = tomllib.loads(worker_scenarios)
     for key in macros:
         # skip default
         if key == "default":
