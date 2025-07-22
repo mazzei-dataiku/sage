@@ -69,8 +69,8 @@ class MyRunnable(Runnable):
         if cont:
             try:
                 r = shutil.copytree(f"{source_path}/streamlit", project_path)
-                r = shutil.copytree(f"{source_path}/python-lib/sage/src/dss_funcs.py", f"{project_path}/src/dss_funcs.py")
-                r = shutil.copytree(f"{source_path}/python-lib/sage/src/dss_folder.py", f"{project_path}/src/dss_folder.py")
+                r = shutil.copy(f"{source_path}/python-lib/sage/src/dss_funcs.py", f"{project_path}/src/dss_funcs.py")
+                r = shutil.copy(f"{source_path}/python-lib/sage/src/dss_folder.py", f"{project_path}/src/dss_folder.py")
                 results.append(["Copy Streamlit", True, None])
             except Exception as e:
                 results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
