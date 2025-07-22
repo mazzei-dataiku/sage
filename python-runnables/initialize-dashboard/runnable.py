@@ -67,7 +67,6 @@ class MyRunnable(Runnable):
             except Exception as e:
                 results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
                 cont = False
-
             
         # Clean up Library
         if cont:
