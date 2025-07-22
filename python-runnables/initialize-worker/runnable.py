@@ -41,7 +41,7 @@ class MyRunnable(Runnable):
                     results.append([worker_url, "Plugin Configured", False, e])
                     cont = False
             continue
-        return 123
+        return
             
             # Create the Sage Worker Project
             if cont:
