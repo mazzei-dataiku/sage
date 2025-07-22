@@ -57,7 +57,7 @@ def run_modules(self, dss_objs, handle, project_key = None):
             if "instance_name" not in df.columns:
                 df["instance_name"] = instance_name
             try:
-                remote_client = build_remote_client(self.sage_project_url, self.sage_project_api, self.)
+                remote_client = build_remote_client(self.sage_project_url, self.sage_project_api, self.ignore_certs)
                 dt_year  = str(self.dt.year)
                 dt_month = str(f'{self.dt.month:02d}')
                 dt_day   = str(f'{self.dt.day:02d}')
