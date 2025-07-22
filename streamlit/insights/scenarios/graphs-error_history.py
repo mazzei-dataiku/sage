@@ -2,18 +2,22 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-from sage.src import dss_folder
 from sage.insights.data_structures import structures
+from sage.src import dss_funcs, dss_folder
+
+local_client = dss_funcs.build_local_client()
+project_handle = local_client.get_default_project()
+sage_project_key = project_handle.project_key
 
 def main(df=pd.DataFrame()):
     # load data structure
     FIG = structures.get("plotly")
 
     # Load additional data
-    top = False
     if df.empty:
-        top = True
-        df = dss_folder.read_folder_input(
+        df = dss_folder.read_local_folder_input(
+            sage_project_key = sage_project_key,
+            project_handle = project_handle,
             folder_name="base_data",
             path=f"/scenarios/run_history.csv" # change this line
         )
@@ -21,8 +25,6 @@ def main(df=pd.DataFrame()):
     # Perform logic here
     filtered_df = df[~df["run_outcome"].str.contains("SUCESS", na=False)]
     grouped = filtered_df.groupby(["instance_name", 'scenario_id'])['step_error_message'].value_counts().reset_index(name="count")
-    if top:
-        grouped = grouped.sort_values("count", ascending=False)[:3]
     grouped["error_pct"] = grouped["count"].apply(lambda x: 100 * x / float(grouped["count"].sum()))
     grouped["error_pct"] = round(grouped["error_pct"], 2)
     grouped["instance_name.scenario_id"] = grouped["instance_name"] + "." + grouped["scenario_id"]

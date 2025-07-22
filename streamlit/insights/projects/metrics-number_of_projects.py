@@ -1,7 +1,13 @@
 import streamlit as st
 import pandas as pd
-from sage.src import dss_folder
+import plotly.express as px
+
 from sage.insights.data_structures import structures
+from sage.src import dss_funcs, dss_folder
+
+local_client = dss_funcs.build_local_client()
+project_handle = local_client.get_default_project()
+sage_project_key = project_handle.project_key
 
 def main(df=pd.DataFrame()):
     # load data structure
@@ -9,7 +15,9 @@ def main(df=pd.DataFrame()):
 
     # Load additional data
     if df.empty:
-        df = dss_folder.read_folder_input(
+        df = dss_folder.read_local_folder_input(
+            sage_project_key = sage_project_key,
+            project_handle = project_handle,
             folder_name="base_data",
             path=f"/projects/metadata.csv" # change this line
         )

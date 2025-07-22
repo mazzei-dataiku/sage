@@ -1,9 +1,18 @@
 import streamlit as st
 import dataiku
-from sage.src import dss_folder
+from sage.src import dss_funcs, dss_folder
+
+local_client = dss_funcs.build_local_client()
+project_handle = local_client.get_default_project()
+sage_project_key = project_handle.project_key
 
 try:
-    df = dss_folder.read_folder_input("base_data", "/partition.csv")
+    df = dss_folder.read_local_folder_input(
+        sage_project_key = sage_project_key,
+        project_handle = project_handle,
+        folder_name = "base_data",
+        path = "/partition.csv"
+    )
     partition = df.iloc[0, 0]
 except:
     partition = "ERROR - Failed to read or find file."
