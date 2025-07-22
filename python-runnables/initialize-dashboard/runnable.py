@@ -70,10 +70,10 @@ class MyRunnable(Runnable):
                 file.delete()
                 file = library.get_file("python/sage/src/dss_init.py")
                 file.delete()
+                results.append(["Copy Streamlit", True, None])
             except Exception as e:
                 results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
                 cont = False
-            results.append(["Copy Streamlit", True, None])
             
         # Create the folders
         if cont:
