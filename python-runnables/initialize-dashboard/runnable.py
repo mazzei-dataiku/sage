@@ -80,11 +80,8 @@ class MyRunnable(Runnable):
         # Clean up Library
         if cont:
             try:
-                
-                
-                
-                #file = library.get_file("python/sage/src/dss_init.py")
-                #file.delete()
+                file = library.get_file("python/sage/src/dss_init.py")
+                file.delete()
                 results.append(["Library Refresh", True, None])
             except Exception as e:
                 results.append(["Library Refresh", False, f"An error occurred: {e}"])
