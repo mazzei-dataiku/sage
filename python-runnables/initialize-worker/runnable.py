@@ -38,4 +38,36 @@ class MyRunnable(Runnable):
                 except Exception as e:
                     results.append([worker_url, "Plugin Configured", False, e])
                     cont = False
-        return
+
+            # Create the Sage Worker Project
+            if cont:
+                try:
+                    project_handle = dss_init.create_worker(remote_client, self.sage_worker_key)
+                    results.append([worker_url, "Sage Worker Created", True, None])
+                except Exception as e:
+                    results.append([worker_url, "Sage Worker Created", False, e])
+                    cont = False
+
+            # Create the DSS Commit Table
+            if cont:
+                try:
+                    dss_init.get_dss_commits(project_handle)
+                    results.append([worker_url, "Load DSS Commits Table", True, None])
+                except Exception as e:
+                    cont = False
+                    results.append([worker_url, "Load DSS Commits Table", False, e])
+            
+            # Create the Phone Home Scenarios
+            if cont:
+                try:
+                    dss_init.create_scenarios(project_handle, "WORKER")
+                    results.append([worker_url, "Update Scenarios", True, None])
+                except Exception as e:
+                    cont = False
+                    results.append([worker_url, "Update Scenarios", False, e])
+        
+        # return results
+        if results:
+            df = pd.DataFrame(results, columns=["worker_url", "step", "results", "message"])
+            html = df.to_html()
+            return html      
