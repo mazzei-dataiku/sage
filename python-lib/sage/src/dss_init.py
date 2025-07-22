@@ -63,7 +63,7 @@ def install_plugin(self, remote_client):
 
 
 def create_worker(client, sage_worker_key):
-    if "SAGE_WORKER" not in client.list_project_keys():
+    if sage_worker_key not in client.list_project_keys():
         project_handle = client.create_project(project_key=sage_worker_key, name=sage_worker_key, owner="admin")
     else:
         project_handle = client.get_project(project_key=sage_worker_key)
