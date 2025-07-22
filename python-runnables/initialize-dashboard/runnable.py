@@ -105,7 +105,8 @@ class MyRunnable(Runnable):
                 results.append(["Create Code Studio", False, f"An error occurred: {e}"])
                 cont = False
                 
-        # 
+        # Create scenario to gather base data 
+        
         
         # return results
         if results:
