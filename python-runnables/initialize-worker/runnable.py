@@ -32,6 +32,8 @@ class MyRunnable(Runnable):
             # Install/Update Plugin if not found
             cont = True
             if self.sage_project_url != worker_url:
+                import logging
+                logging.error(self.sage_project_url, worker_url)
                 try:
                     dss_init.install_plugin(self, remote_client)
                     results.append([worker_url, "Plugin Configured", True, None])
