@@ -69,9 +69,9 @@ class MyRunnable(Runnable):
         if cont:
             try:
                 r = shutil.copytree(f"{source_path}/streamlit", project_path)
-                r = shutil.copytree(f"{source_path}/python-lib/sage/src", f"{project_path}/src")
-                file = library.add_file("python/sage_init.txt")
-                file.delete()
+                r = shutil.copytree(f"{source_path}/python-lib/sage/src/dss_funcs.py", f"{project_path}/src/dss_funcs.py")
+                r = shutil.copytree(f"{source_path}/python-lib/sage/src/dss_folder.py", f"{project_path}/src/dss_folder.py")
+
                 results.append(["Copy Streamlit", True, None])
             except Exception as e:
                 results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
@@ -80,7 +80,7 @@ class MyRunnable(Runnable):
         # Clean up Library
         if cont:
             try:
-                file = library.get_file("python/sage/src/dss_init.py")
+                file = library.add_file("python/sage_init.txt")
                 file.delete()
                 results.append(["Library Refresh", True, None])
             except Exception as e:
