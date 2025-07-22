@@ -40,5 +40,4 @@ class MyRunnable(Runnable):
                 except Exception as e:
                     results.append([worker_url, "Plugin Configured", False, e])
                     cont = False
-            continue
         return
