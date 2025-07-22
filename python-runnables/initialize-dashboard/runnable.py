@@ -60,20 +60,19 @@ class MyRunnable(Runnable):
 
         # Copy the streamlit application
         if cont:
-            project_handle = local_client.get_project(self.sage_project_key)
-            library = project_handle.get_library()
             try:
                 r = shutil.copytree(f"{source_path}/streamlit", project_path)
-                results.append(["Copy Streamlit - Core", True, None])
-            except Exception as e:
-                results.append(["Copy Streamlit - Core", False, f"An error occurred: {e}"])
-                cont = False
-            try:
                 r = shutil.copytree(f"{source_path}/python-lib/sage/src", f"{project_path}/src")
-                results.append(["Copy Streamlit - SRC", True, None])
+                results.append(["Copy Streamlit", True, None])
             except Exception as e:
-                results.append(["Copy Streamlit - SRC", False, f"An error occurred: {e}"])
+                results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
                 cont = False
+
+            
+        # Clean up Library
+        if cont:
+            project_handle = local_client.get_project(self.sage_project_key)
+            library = project_handle.get_library()
             file = library.add_file("python/sage/initialized.csv")
             file.delete()
             
