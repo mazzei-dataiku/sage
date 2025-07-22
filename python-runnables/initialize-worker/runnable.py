@@ -26,7 +26,7 @@ class MyRunnable(Runnable):
             # Create a remote client
             worker_url = api_config["worker_url"]
             worker_api = api_config["worker_api"]
-            remote_client = dss_funcs.build_remote_client(worker_url, worker_api)
+            remote_client = dss_funcs.build_remote_client(worker_url, worker_api, self.ignore_certs)
             
             # Install Plugin if not found
             cont = True
