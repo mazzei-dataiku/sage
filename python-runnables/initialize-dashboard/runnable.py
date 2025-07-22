@@ -73,8 +73,6 @@ class MyRunnable(Runnable):
             try:
                 project_handle = local_client.get_project(self.sage_project_key)
                 library = project_handle.get_library()
-#                file = library.add_file("python/sage/initialized.csv")
-#                file.delete()
                 file = file = library.get_file("python/sage/src/dss_init.py")
                 file.delete()
                 results.append(["Library Refresh", True, None])
