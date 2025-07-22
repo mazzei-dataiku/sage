@@ -63,7 +63,7 @@ class MyRunnable(Runnable):
                 except OSError as e:
                     results.append(["Delete Existing", False, f"Error deleting directory '{project_path}': {e}"])
                     cont = False
-        return
+        cont = False
 
         # Copy the streamlit application
         if cont:
