@@ -80,10 +80,10 @@ class MyRunnable(Runnable):
             try:
                 f = dss_folder.get_folder(self.sage_project_key, project_handle, "partitioned_data")
                 f = dss_folder.get_folder(self.sage_project_key, project_handle, "base_data")
+                results.append(["Confirmed Folders", True, None])
             except Exception as e:
                 results.append(["Copy Streamlit", False, f"An error occurred: {e}"])
                 cont = False
-            results.append(["Confirmed Folders", True, None])
         
         # Create the Code Studio Template
         if cont:
