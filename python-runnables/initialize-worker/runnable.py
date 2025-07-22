@@ -15,7 +15,7 @@ class MyRunnable(Runnable):
         self.sage_project_api = plugin_config.get("sage_project_api", None)
         self.sage_worker_key  = plugin_config.get("sage_worker_key", None)
         self.ignore_certs     = plugin_config.get("ignore_certs", False)
-        self.update_github    = plugin_config.get("update_github", False)
+        self.update_github    = config.get("update_github", False)
         self.repo = "https://github.com/mazzei-dataiku/sage.git"
         
     def get_progress_target(self):
@@ -29,15 +29,16 @@ class MyRunnable(Runnable):
             worker_api = api_config["worker_api"]
             remote_client = dss_funcs.build_remote_client(worker_url, worker_api, self.ignore_certs)
             
-            # Install Plugin if not found
+            # Install/Update Plugin if not found
             cont = True
-            try:
-                dss_init.install_plugin(self, remote_client)
-                results.append([worker_url, "Plugin Configured", True, None])
-            except Exception as e:
-                results.append([worker_url, "Plugin Configured", False, e])
-                cont = False
-            
+            if self.sage_project_url != worker_url:
+                try:
+                    dss_init.install_plugin(self, remote_client)
+                    results.append([worker_url, "Plugin Configured", True, None])
+                except Exception as e:
+                    results.append([worker_url, "Plugin Configured", False, e])
+                    cont = False
+
             # Create the Sage Worker Project
             if cont:
                 try:
@@ -69,4 +70,4 @@ class MyRunnable(Runnable):
         if results:
             df = pd.DataFrame(results, columns=["worker_url", "step", "results", "message"])
             html = df.to_html()
-            return html      
+            return #html      
