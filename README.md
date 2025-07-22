@@ -19,6 +19,8 @@ Due to the web application being built on Streamlit, installation requires a bit
 **TESTED ON VERSIONS:**
 1. v13.5.5
 
+##
+
 1. Plugin
     1. Login as an admin account
     1. Migrate to plugins and install from GIT: https://github.com/mazzei-dataiku/sage.git
