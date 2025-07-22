@@ -95,10 +95,10 @@ class MyRunnable(Runnable):
                         break
                 if not found:
                     code_studio = project_handle.create_code_studio(name="Sage Dashboard", template_id="sage")
+                results.append(["Create Code Studio", True, None])
             except Exception as e:
                 results.append(["Create Code Studio", False, f"An error occurred: {e}"])
                 cont = False
-            results.append(["Create Code Studio", True, None])
         
         # return results
         if results:
