@@ -32,9 +32,9 @@ class MyRunnable(Runnable):
             cont = True
             try:
                 dss_init.install_plugin(self, remote_client)
-                results.append([worker_url, "plugin_install", True, None])
+                results.append([worker_url, "Plugin Configure", True, None])
             except Exception as e:
-                results.append([worker_url, "plugin_install", False, e])
+                results.append([worker_url, "Plugin Configure", False, e])
                 cont = False
             
             # Create the Sage Worker Project
