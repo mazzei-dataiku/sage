@@ -5,10 +5,10 @@ import os
 import re
 import importlib
 import pandas as pd
-
 from sage.src import dss_folder
 
 
+# ---------- DATAIKU CLIENT HANDLES -----------------------------
 def build_local_client():
     client = dataiku.api_client()
     return client
@@ -27,6 +27,7 @@ def get_dss_name(client):
     return instance_name
 
 
+# ---------- DATA GATHER MODULES -----------------------------
 def run_modules(self, dss_objs, handle, project_key = None):
     results = []
     directory = dss_objs.__path__[0]
@@ -75,3 +76,48 @@ def get_nested_value(data, keys):
         else:
             return False
     return current
+
+
+# ---------- STREAMLIT MODULES -----------------------------
+def collect_modules(module):
+    import streamlit as st
+    d = {}
+    directory = module.__path__[0]
+    for root, _, files in os.walk(directory):
+        for f in files:
+            if f.endswith(".py") and f != "__init__.py":
+                module_name = f[:-3]
+                path = root.replace(directory, "")
+                fp = os.path.join(root, f)
+                delimiters = r'[-_]'
+                words = re.split(delimiters, module_name)
+                capitalized_words = [word.capitalize() for word in words]
+                final_string = " ".join(capitalized_words)
+                d[final_string] = [module_name, fp]
+    return d
+
+
+def collect_display_data(load_modules):
+    display_data = []
+    modules = collect_modules(load_modules)
+    for key in modules.keys():
+        r_type = key.split(" ")
+        r_type = r_type[0].lower()
+        display_data.append(key)
+    return modules, display_data
+
+
+def load_insights(module_name, fp, df_filter=pd.DataFrame()):
+    results = {}
+    spec = importlib.util.spec_from_file_location(module_name, fp)
+    try:
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        if hasattr(module, 'main'):
+            results = module.main(df_filter)
+    except Exception as e:
+        import streamlit as st
+        st.error(f"Error importing or running ({fp}) {module_name}: {e}")
+        results = {}
+        return results
+    return results
