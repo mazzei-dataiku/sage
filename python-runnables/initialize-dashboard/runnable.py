@@ -48,9 +48,9 @@ class MyRunnable(Runnable):
         if cont:
             project_path = f"{root_path}/config/projects/{self.sage_project_key}/lib/python"
             if not os.path.isdir(project_path):
-                results.append(["project library", False, "Cannot find project library"])
+                results.append(["Project Library Confirmed", False, "Cannot find project library"])
                 cont = False
-            results.append(["project library", True, None])
+            results.append(["Project Library Confirmed", True, None])
         
         # Delete the current running version
         if cont:
