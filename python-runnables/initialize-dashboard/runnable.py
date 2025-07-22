@@ -65,11 +65,6 @@ class MyRunnable(Runnable):
                     cont = False
             else:
                 results.append(["Delete Existing", True, "Initial Setup"])
-        
-        
-        
-        
-        #cont = False
 
         # Copy the streamlit application
         if cont:
