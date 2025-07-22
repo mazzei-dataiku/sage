@@ -53,10 +53,10 @@ class MyRunnable(Runnable):
             if os.path.exists(project_path) and os.path.isdir(project_path):
                 try:
                     shutil.rmtree(project_path)
+                    results.append(["Delete current web application", True, None])
                 except OSError as e:
                     results.append(["Delete current web application", False, f"Error deleting directory '{project_path}': {e}"])
                     cont = False
-                results.append(["Delete current web application", True, None])
 
         # Copy the streamlit application
         if cont:
