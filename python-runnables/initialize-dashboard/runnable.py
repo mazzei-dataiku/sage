@@ -64,8 +64,6 @@ class MyRunnable(Runnable):
             library = project_handle.get_library()
             try:
                 r = shutil.copytree(f"{source_path}/streamlit", project_path)
-                file = library.add_file("python/sage/initialized.csv")
-                file.delete()
                 results.append(["Copy Streamlit - Core", True, None])
             except Exception as e:
                 results.append(["Copy Streamlit - Core", False, f"An error occurred: {e}"])
@@ -73,12 +71,13 @@ class MyRunnable(Runnable):
                 
             try:
                 r = shutil.copytree(f"{source_path}/python-lib/sage/src", f"{project_path}/src")
-                file = library.get_file("python/sage/src/dss_init.py")
-                file.delete()
                 results.append(["Copy Streamlit - SRC", True, None])
             except Exception as e:
                 results.append(["Copy Streamlit - SRC", False, f"An error occurred: {e}"])
                 cont = False
+                
+            file = library.add_file("python/sage/initialized.csv")
+            file.delete()
             
         # Create the folders
         if cont:
