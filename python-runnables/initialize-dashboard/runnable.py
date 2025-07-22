@@ -117,10 +117,10 @@ class MyRunnable(Runnable):
         if cont:
             try:
                 dss_init.create_scenarios(project_handle, "DASHBOARD")
-                results.append(["scenarios", True, None])
+                results.append(["Update Scenarios", True, None])
             except Exception as e:
                 cont = False
-                results.append(["scenarios", False, e])
+                results.append(["Update Scenarios", False, e])
         
         # return results
         if results:
