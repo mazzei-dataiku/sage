@@ -90,11 +90,12 @@ class MyRunnable(Runnable):
                 results.append(["Create Folders", False, f"An error occurred: {e}"])
                 cont = False
         
-        # Create the Code Studio Template -- future release create the CS in admin as well so I control the whole naming
+        # -- future release create the CS in admin as well so I control the whole naming
         if cont:
             # todo: create CS in admin settings for users removing a setup step
             print()
-            
+
+        # Create the Code Studio Template
         if cont:
             try:
                 found = False
