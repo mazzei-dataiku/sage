@@ -105,7 +105,7 @@ def get_dss_commits(project_handle):
 
 
 def create_scenarios(project_handle):
-    macros = tomllib.loads(t)
+    macros = tomllib.loads(worker_scenarios)
     for key in macros:
         # skip default
         if key == "default":
