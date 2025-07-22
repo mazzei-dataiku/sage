@@ -25,6 +25,8 @@ class MyRunnable(Runnable):
         # Get local client and name
         local_client = dss_funcs.build_local_client()
         instance_name = dss_funcs.get_dss_name(local_client)
+        project_handle = local_client.get_project(self.sage_project_key)
+        library = project_handle.get_library()
         
         # Get plugin directory
         if cont:
@@ -75,8 +77,7 @@ class MyRunnable(Runnable):
         # Clean up Library
         if cont:
             try:
-                project_handle = local_client.get_project(self.sage_project_key)
-                library = project_handle.get_library()
+                
                 file = library.add_file("python/sage/init.txt")
                 file.delete()
                 #file = library.get_file("python/sage/src/dss_init.py")
